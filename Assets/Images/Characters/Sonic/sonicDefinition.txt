@@ -1,0 +1,9 @@
+name = sonic
+image = Sonic.png
+iconImage = SonicIcons.png
+boxWidth = 64
+boxHeight = 64
+spriteList = stand
+
+standFrames = 1-9, 1-11, 1-9
+standSpeed = 0.1

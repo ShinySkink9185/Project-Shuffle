@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b6smmj6q8jyjb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_is3hn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6j25e"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7rld2"]
+size = Vector3(60, 1, 60)
+
+[node name="Test Board" type="Node3D" unique_id=1852574017]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1358689471]
+physics_material_override = SubResource("PhysicsMaterial_is3hn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=754710678]
+shape = SubResource("BoxShape3D_6j25e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=121517175]
+mesh = SubResource("BoxMesh_7rld2")

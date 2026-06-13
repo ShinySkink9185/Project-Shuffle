@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bmjyixaax1gr4"]
+
+[ext_resource type="Script" uid="uid://cy6p5mfk63ep2" path="res://Scenes/Objects/Player/player.gd" id="1_2bvqb"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1953867824]
+script = ExtResource("1_2bvqb")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1370545231]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D" unique_id=1980552042]
