@@ -1,4 +1,7 @@
-name = sonic
+id = Sonic
+name = Sonic
+movementAbility = SPIN_DASH
+attackAbility = LIGHT_SPEED_SPIN_ATTACK
 image = Sonic.png
 iconImage = SonicIcons.png
 boxWidth = 64

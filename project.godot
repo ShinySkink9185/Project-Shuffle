@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Project Shuffle"
 run/main_scene="uid://csbox0g7svh5f"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
