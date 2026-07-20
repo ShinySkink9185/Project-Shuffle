@@ -6,7 +6,7 @@ image = Sonic.png
 iconImage = SonicIcons.png
 boxWidth = 64
 boxHeight = 64
-spriteList = stand
+spriteList = stand, wait
 
 standFrames = 0-8, 0-10, 0-8
 standSpeed = 0.1

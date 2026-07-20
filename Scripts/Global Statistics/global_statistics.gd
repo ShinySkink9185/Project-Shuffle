@@ -3,6 +3,7 @@ class_name Global_Statistics
 
 static var movementAbilities = [] ## Our total movement abilities that exist in-game.
 static var attackAbilities = [] ## Our total attack abilities that exist in-game.
+static var characterAnimations = [] ## Our valid character animation names that exist in-game.
 static var characters = [] ## Our total characters that exist in-game.
 static var boards = [] ## Our total boards that exist in-game.
 
@@ -30,14 +31,32 @@ func _ready():
 	define_attack_ability("LULLABY", "Lullaby", "Use the [S] during battle, and you won't take damage from the monster if you lose.")
 	define_attack_ability("SONIC_RUMBLE", "Sonic Rumble", "Use the [S] during battle to attack with cards between 4-6.")
 	
+	# Character animation definitions
+	# "STAND" can loop back to itself because we have detection for that, it kinda needs to exist
+	# As a rule of thumb, we don't want to have a situation where one animation falls back to another that
+	# then falls back to that same animation. That'd probably freeze the game
+	define_character_animation("stand", "n/a")
+	define_character_animation("wait", "stand")
+	define_character_animation("walk", "stand")
+	define_character_animation("run", "walk")
+	define_character_animation("jump", "stand")
+	define_character_animation("fall", "jump")
+	define_character_animation("alert", "stand")
+	define_character_animation("drink", "wait")
+	define_character_animation("hurt", "fall")
+	define_character_animation("victory", "wait")
+	define_character_animation("stand_sad", "stand")
+	define_character_animation("walk_sad", "walk")
+	define_character_animation("defeat", "wait")
+	
 	# Character definitions
 	define_character("res://Assets/Images/Characters/Sonic/sonicDefinition.txt")
 	
 	# Board definitions
 	
 class MovementAbility: ## Classes for each Movement Ability
-	var id: String ## The identifier of the animation.
-	var name: String ## The name/identifier of the animation.
+	var id: String ## The identifier of the ability that is used internally.
+	var name: String ## The name of the ability that shows up in-game.
 	var description: String ## What the information of the ability contains in the dialogue.
 	# TODO: Have the description String be able to accept image parameters.
 	# I think RichTextLabels might have something to do with it?
@@ -47,7 +66,7 @@ class MovementAbility: ## Classes for each Movement Ability
 		name = setName
 		description = setDescription
 
-func define_movement_ability(setID: String, setName: String, setDescription: String): ## Defines a character that can be added to the game.
+func define_movement_ability(setID: String, setName: String, setDescription: String): ## Defines a movement ability that can be added to the game.
 	var movementAbility = MovementAbility.new(setID, setName, setDescription)
 	# Only add our ability if its ID isn't blank.
 	if movementAbility.id != "":
@@ -56,8 +75,8 @@ func define_movement_ability(setID: String, setName: String, setDescription: Str
 		movementAbilities.append(movementAbility)
 	
 class AttackAbility: ## Classes for each Attack Ability
-	var id: String ## The identifier of the animation.
-	var name: String ## The name/identifier of the animation.
+	var id: String ## The identifier of the ability that is used internally.
+	var name: String ## The name of the ability that shows up in-game.
 	var description: String ## What the information of the ability contains in the dialogue.
 	# TODO: Have the description String be able to accept image parameters.
 	# I think RichTextLabels might have something to do with it?
@@ -67,7 +86,7 @@ class AttackAbility: ## Classes for each Attack Ability
 		name = setName
 		description = setDescription
 
-func define_attack_ability(setID: String, setName: String, setDescription: String): ## Defines a character that can be added to the game.
+func define_attack_ability(setID: String, setName: String, setDescription: String): ## Defines an attack ability that can be added to the game.
 	var attackAbility = AttackAbility.new(setID, setName, setDescription)
 	# Only add our ability if its ID isn't blank.
 	if attackAbility.id != "":
@@ -75,12 +94,44 @@ func define_attack_ability(setID: String, setName: String, setDescription: Strin
 			attackAbility.name = attackAbility.id.capitalize()
 		attackAbilities.append(attackAbility)
 
+class CharacterAnimation: ## Classes for each character animation
+	var id: String ## The identifier for each animation.
+	var fallbackID: String ## What animation will this fall back to if a character doesn't have this?
+	
+	func _init(setID: String, setFallbackID: String):
+		id = setID.to_lower()
+		fallbackID = setFallbackID.to_lower()
+
+func define_character_animation(setID: String, setFallbackID: String): ## Defines a character animation that can be added to the game.
+	var characterAnimation = CharacterAnimation.new(setID, setFallbackID)
+	# Only add our ability if it's ID doesn't match up with anything else.
+	# TODO: do that for our other things
+	# By the way, we don't check if the fallback ID's animation exists because what if that's added later?
+	# It's probably better if that's checked when it's trying to be used rather than when the animation's created.
+	
+	for currentAnimation in characterAnimations:
+		if currentAnimation.id == characterAnimation.id:
+			print('ERROR: A character animation already exists with the name "' + currentAnimation.id + '"!')
+			return
+	
+	characterAnimations.append(characterAnimation)
+
+class CharacterAnimationStorage: ## Each individual animation that one character has.
+		var id: String ## The identifier of the animation.
+		var frames: Array[int] ## Order of frames.
+		var loopPoint: int ## What frame do we loop back to?
+		var frameTimes: Array[float] ## How much time should each frame last, in seconds?
+		
+		func _init(setID: String, setFrames: Array[int], setLoopPoint: int, setFrameTimes: Array[float]):
+			id = setID
+			frames = setFrames
+			loopPoint = setLoopPoint
+			frameTimes = setFrameTimes
+
 class Character: ## Classes for the stats of each Character
 	var definition: String
 	var id: String
 	var name: String
-	var image: String
-	var iconImage: String
 	var movementAbility: String
 	var attackAbility: String
 	
@@ -88,20 +139,23 @@ class Character: ## Classes for the stats of each Character
 	# we can't just call the variables from our base class in the inner one...
 	var movementAbilities = []
 	var attackAbilities = []
+	var characterAnimations = []
+	
+	# Image stuff
+	var image: String
+	var iconImage: String
+	var boxWidth: int
+	var boxHeight: int
 	
 	# Animation stuff.
+	var spriteList: String
 	var animations: Array
-	
-	class CharacterAnimation: ## Each individual animation that one character has.
-		var name: String ## The name of the animation.
-		var frames: Array[int] ## Order of frames.
-		var loopPoint: int ## What frame do we loop back to?
-		var frameTimes: Array[int] ## How much time should each frame last?
 	
 	func _init(setDefinition: String, mainNode):
 		# Handle our main node's abilties lists
 		movementAbilities = mainNode.movementAbilities
 		attackAbilities = mainNode.attackAbilities
+		characterAnimations = mainNode.characterAnimations
 		
 		definition = setDefinition
 		# Read our definition file, and get it as a text message.
@@ -193,9 +247,102 @@ class Character: ## Classes for the stats of each Character
 		if iconImagePath.is_absolute_path():
 			iconImage = iconImagePath
 		else:
-			print("ERROR: Icon image not found for a character!")
-			name = ""
+			print("ERROR: Icon image not found for this character!")
+			id = ""
 			return
+		
+		# Get our character's box width.
+		if definitionText.findn("\nboxWidth=") == -1:
+			print("ERROR: No box width has been given for this character! Defaulting to 64.")
+			boxWidth = 64
+		else:
+			boxWidth = find_argument(definitionText, "\nboxWidth=").to_int()
+		
+		# Get our character's box height.
+		if definitionText.findn("\nboxHeight=") == -1:
+			print("ERROR: No box height has been given for this character! Defaulting to 64.")
+			boxHeight = 64
+		else:
+			boxHeight = find_argument(definitionText, "\nboxHeight=").to_int()
+		
+		# TODO: Animation data
+		# Get our character's animation data. This'll be pretty complex...!
+		if definitionText.findn("\nspriteList=") == -1:
+			print("ERROR: No animations have been given for this character!")
+			id = ""
+			return
+		spriteList = (find_argument(definitionText, "\nspriteList=")).to_lower()
+		print(spriteList)
+		
+		var spriteListArray = spriteList.split(",", false) # A list of all of the animations that we have for this character.
+		
+		# Here comes the tricky part: getting all of our animations!
+		for currentAnimation in spriteListArray:
+			var setID: String ## The identifier of the animation.
+			var setFrames: Array[int] ## Order of frames.
+			var setLoopPoint: int ## What frame do we loop back to?
+			var setFrameTimes: Array[float] ## How much time should each frame last, in seconds?
+			
+			# First, we need the ID. Simple enough.
+			setID = currentAnimation
+			
+			# Now, this is a little trickier; we have to find the corresponding name section,
+			# and get our frames, looppoints, and times from that.
+			# TODO: do that
+			
+			# Starting with our frames...
+			print("\n" + setID + "Frames=")
+			if definitionText.findn("\n" + setID + "Frames=") == -1:
+				print("ERROR: This character's " + '"' + setID + '"' + " animation doesn't have set frames!")
+				setFrames = [0]
+			else:
+				# RULES:
+				# Commas separate frames. (0, 1, 2)
+				# When adding a dash, cover all sprites from an area. (0-3, 4)
+				var setFrameText = find_argument(definitionText, "\n" + setID + "Frames=")
+				var setFrameArray = setFrameText.split(",", false) # A list of all of the frames that we have for this animation.
+				setFrameArray = Array(setFrameArray) # We have to do this because we can't modify a PackedStringArray for some reason...
+				while setFrameArray:
+					if setFrameArray[0] is String: # We have to check for a string first...
+						if "-" in setFrameArray[0]:
+							# This is a hacky solution since I can't just append array entries anywhere for whatever reason...
+							var individualNumbers = get_in_between_numbers(setFrameArray[0])
+							setFrameArray.pop_front() # Removes the first index...
+							individualNumbers.append_array(setFrameArray) # ...appends our array...
+							setFrameArray = individualNumbers # ...and sets that array!
+						else:
+							setFrames.append(setFrameArray[0].to_int()) # Add this frame to our final frame array.
+							setFrameArray.pop_front() # Removes the first element in the array.
+					else: # We can't have a dash if it's an integer!
+						setFrames.append(setFrameArray[0]) # Add this frame to our final frame array.
+						setFrameArray.pop_front() # Removes the first element in the array.
+			
+			# Now, we need our loop point...
+			# TODO: clarify that it's not what frame in the image, it's what frame in the order of frame definition
+			
+			# Finally, we add the animation to our array!
+			var characterAnimation = CharacterAnimationStorage.new(setID, setFrames, setLoopPoint, setFrameTimes)
+			animations.append(characterAnimation)
+		
+	func get_in_between_numbers(numbers: String): ## Converts our string of a number dash to individual numbers.
+		var firstAndLastNumbers = numbers.split("-", false)
+		# We have to convert the strings to integers, oops...
+		var firstNum = firstAndLastNumbers[0].to_int()
+		var lastNum = firstAndLastNumbers[1].to_int()
+		
+		# Now, we need to detect if one is higher than the other and swap 'em if so.
+		if firstNum > lastNum:
+			var firstNumRemembrance = firstNum
+			firstNum = lastNum
+			lastNum = firstNumRemembrance
+			
+		# Finally, we gotta get everything in an array!
+		var finalArray: Array
+		while firstNum <= lastNum:
+			finalArray.append(firstNum)
+			firstNum += 1
+			
+		return finalArray
 	
 	func find_argument(definitionText: String, text: String): ## Help us find an argument!
 		var firstIndex = definitionText.findn(text)
