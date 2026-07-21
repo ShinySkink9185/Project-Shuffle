@@ -9,4 +9,5 @@ boxHeight = 64
 spriteList = stand, wait
 
 standFrames = 0-8, 0-10, 0-8
+standLoopPoint = 1
 standSpeed = 0.1

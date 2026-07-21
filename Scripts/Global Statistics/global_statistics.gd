@@ -50,7 +50,7 @@ func _ready():
 	define_character_animation("defeat", "wait")
 	
 	# Character definitions
-	define_character("res://Assets/Images/Characters/Sonic/sonicDefinition.txt")
+	define_character("res://Assets/Character Definitions/Sonic/sonicDefinition.txt")
 	
 	# Board definitions
 	
@@ -291,7 +291,8 @@ class Character: ## Classes for the stats of each Character
 			# TODO: do that
 			
 			# Starting with our frames...
-			print("\n" + setID + "Frames=")
+			# TODO: Account for situations where there would be more than one dash per comma,
+			# and for negative numbers. We shouldn't have either of those.
 			if definitionText.findn("\n" + setID + "Frames=") == -1:
 				print("ERROR: This character's " + '"' + setID + '"' + " animation doesn't have set frames!")
 				setFrames = [0]
@@ -318,7 +319,18 @@ class Character: ## Classes for the stats of each Character
 						setFrameArray.pop_front() # Removes the first element in the array.
 			
 			# Now, we need our loop point...
-			# TODO: clarify that it's not what frame in the image, it's what frame in the order of frame definition
+			if definitionText.findn("\n" + setID + "LoopPoint=") == -1:
+				# No error text this time, since people may intentionally leave this blank
+				setLoopPoint = 0
+			else:
+				var potentialLoopPoint = find_argument(definitionText, "\n" + setID + "LoopPoint=").to_int()
+				if potentialLoopPoint > setFrames.size() - 1:
+					print("ERROR: The loop point is greater than the amount of frames there are!")
+					setLoopPoint = 0
+				else:
+					setLoopPoint = potentialLoopPoint
+			
+			print(setLoopPoint)
 			
 			# Finally, we add the animation to our array!
 			var characterAnimation = CharacterAnimationStorage.new(setID, setFrames, setLoopPoint, setFrameTimes)
