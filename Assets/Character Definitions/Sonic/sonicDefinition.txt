@@ -8,6 +8,6 @@ boxWidth = 64
 boxHeight = 64
 spriteList = stand, wait
 
-standFrames = 0-8, 0-10, 0-8
+standFrames = 0-8, 0-10, 0-8, 11-12, 12-13, 12-13, 12, 12, 11
 standLoopPoint = 1
-standSpeed = 0.1
+standSpeed = 3.8
