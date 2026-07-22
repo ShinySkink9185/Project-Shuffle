@@ -281,7 +281,7 @@ class Character: ## Classes for the stats of each Character
 			var setID: String ## The identifier of the animation.
 			var setFrames: Array[int] ## Order of frames.
 			var setLoopPoint: int ## What frame do we loop back to?
-			var setFrameTimes: Array[float] ## How much time should each frame last, in seconds?
+			var setFrameTimes = [] ## How much time should each frame last, in seconds?
 			
 			# First, we need the ID. Simple enough.
 			setID = currentAnimation
@@ -330,7 +330,51 @@ class Character: ## Classes for the stats of each Character
 				else:
 					setLoopPoint = potentialLoopPoint
 			
-			print(setLoopPoint)
+			# Next, we need either our SPEED or our FRAME TIMES.
+			# FRAME TIMES are prioritized over SPEED.
+			# Where SPEED is "this animation takes # seconds to finish",
+			# FRAME TIMES are "each frame takes # seconds to finish".
+			if definitionText.findn("\n" + setID + "FrameTimes=") == -1:
+				var totalSpeed: float = 1 # Our template in case we have nothing to work with
+				
+				if definitionText.findn("\n" + setID + "Speed=") == -1: # Neither SPEED nor FRAMETIMES are present
+					print('ERROR: This character does not have any Frame Times or Speed settings in animation "' + setID + '"!')
+				else: # SPEED is present
+					totalSpeed = find_argument(definitionText, "\n" + setID + "Speed=").to_float()
+					if totalSpeed <= 0:
+						print('ERROR: Total speed cannot be 0 or less!')
+						totalSpeed = 1
+				
+				var individualSpeeds = float(totalSpeed / setFrames.size())
+				for frame in setFrames:
+					setFrameTimes.append(individualSpeeds)
+					
+			else: # FRAMETIMES are present
+				var setFrameTimesText = find_argument(definitionText, "\n" + setID + "FrameTimes=")
+				setFrameTimes = setFrameTimesText.split(",", false) # A list of all of the times that we have for our frames.
+				setFrameTimes = Array(setFrameTimes) # This thing again...
+				
+				var currentFrame: int = 0
+				for frameTime in setFrameTimes:
+					setFrameTimes[currentFrame] = setFrameTimes[currentFrame].to_float()
+					if setFrameTimes[currentFrame] <= 0:
+						print('ERROR: A frame time cannot be 0 or less!')
+						if setFrameTimes[currentFrame] == 0:
+							setFrameTimes.remove_at(currentFrame)
+							setFrameTimes.insert(currentFrame, 0.1)
+						setFrameTimes[currentFrame] = -setFrameTimes[currentFrame]
+					currentFrame += 1
+				
+				if setFrameTimes.size() < setFrames.size():
+					print("ERROR: FrameTimes size is less than amount of frames! Did you check your frame amount properly?")
+					while setFrameTimes.size() < setFrames.size():
+						setFrameTimes.append(0.1)
+				elif setFrameTimes.size() > setFrames.size():
+					print("NOTICE: FrameTimes size is more than amount of frames.")
+					while setFrameTimes.size() > setFrames.size():
+						setFrameTimes.pop_back()
+			
+			setFrameTimes = Array(setFrameTimes, TYPE_FLOAT, "", null)
 			
 			# Finally, we add the animation to our array!
 			var characterAnimation = CharacterAnimationStorage.new(setID, setFrames, setLoopPoint, setFrameTimes)

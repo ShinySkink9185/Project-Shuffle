@@ -5,6 +5,7 @@ extends Node3D
 
 var active: bool = true ## Is this space currently active?
 var playerOfInterest ## The player who passed by or landed on the space.
+# TODO: maybe it would be better if the two below were signals instead
 var playerLanded: bool = false ## Did a player just land on the space?
 var playerPassed: bool = false ## Did a player just pass the space?
 var deductSpaceCount: bool = false ## If the player passed this space, does this deduct one move from their card?

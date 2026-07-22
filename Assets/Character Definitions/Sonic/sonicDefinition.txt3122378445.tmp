@@ -1,0 +1,13 @@
+id = Sonic
+name = Sonic
+movementAbility = SPIN_DASH
+attackAbility = LIGHT_SPEED_SPIN_ATTACK
+image = Sonic.png
+iconImage = SonicIcons.png
+boxWidth = 64
+boxHeight = 64
+spriteList = stand, wait
+
+standFrames = 0-8, 0-10, 0-8
+standLoopPoint = 0
+standSpeed = 3
