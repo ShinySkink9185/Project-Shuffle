@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://n6347qn0hpni"]
+
+[ext_resource type="Script" uid="uid://d1lg2f4pjq47r" path="res://Scenes/Objects/Boards/Spaces/Minus Ring/minus_ring_space.gd" id="1_qkemj"]
+[ext_resource type="Texture2D" uid="uid://sdnen7vn74pw" path="res://Assets/Images/Spaces/Spaces.png" id="2_tpx3o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4v7s"]
+atlas = ExtResource("2_tpx3o")
+region = Rect2(148, 0, 74, 74)
+
+[node name="Minus Ring Space" type="Node3D" unique_id=1645177472]
+script = ExtResource("1_qkemj")
+metadata/_custom_type_script = "uid://bhlkf4d7of7d6"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1171435152]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+texture = SubResource("AtlasTexture_g4v7s")

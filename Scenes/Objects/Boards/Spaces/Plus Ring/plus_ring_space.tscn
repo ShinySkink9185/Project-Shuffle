@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cykbv6m4ljk5r"]
 
-[ext_resource type="Script" uid="uid://crxox1aid65u4" path="res://Scenes/Objects/Boards/Spaces/plus_ring_space.gd" id="1_e06jh"]
+[ext_resource type="Script" uid="uid://crxox1aid65u4" path="res://Scenes/Objects/Boards/Spaces/Plus Ring/plus_ring_space.gd" id="1_e06jh"]
 [ext_resource type="Texture2D" uid="uid://sdnen7vn74pw" path="res://Assets/Images/Spaces/Spaces.png" id="2_aqieu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7w32h"]

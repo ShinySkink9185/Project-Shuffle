@@ -53,6 +53,9 @@ func _ready():
 	define_character("res://Assets/Character Definitions/Sonic/sonicDefinition.txt")
 	
 	# Board definitions
+	# TODO: maybe these can be defined through text files as well once people can
+	# make their own boards?
+	define_board("test_board", "Test Board", "res://Scenes/Maps/Boards/Test/test_board.tscn")
 	
 class MovementAbility: ## Classes for each Movement Ability
 	var id: String ## The identifier of the ability that is used internally.
@@ -134,6 +137,7 @@ class Character: ## Classes for the stats of each Character
 	var name: String
 	var movementAbility: String
 	var attackAbility: String
+	# TODO: add character-specific sounds
 	
 	# We have to copy-paste the table of all of our existing abilities here because
 	# we can't just call the variables from our base class in the inner one...
@@ -272,7 +276,6 @@ class Character: ## Classes for the stats of each Character
 			id = ""
 			return
 		spriteList = (find_argument(definitionText, "\nspriteList=")).to_lower()
-		print(spriteList)
 		
 		var spriteListArray = spriteList.split(",", false) # A list of all of the animations that we have for this character.
 		
@@ -335,7 +338,7 @@ class Character: ## Classes for the stats of each Character
 			# Where SPEED is "this animation takes # seconds to finish",
 			# FRAME TIMES are "each frame takes # seconds to finish".
 			if definitionText.findn("\n" + setID + "FrameTimes=") == -1:
-				var totalSpeed: float = 1 # Our template in case we have nothing to work with
+				var totalSpeed: float = 60 # Our template in case we have nothing to work with
 				
 				if definitionText.findn("\n" + setID + "Speed=") == -1: # Neither SPEED nor FRAMETIMES are present
 					print('ERROR: This character does not have any Frame Times or Speed settings in animation "' + setID + '"!')
@@ -343,7 +346,10 @@ class Character: ## Classes for the stats of each Character
 					totalSpeed = find_argument(definitionText, "\n" + setID + "Speed=").to_float()
 					if totalSpeed <= 0:
 						print('ERROR: Total speed cannot be 0 or less!')
-						totalSpeed = 1
+						totalSpeed = 60
+						
+				# Convert totalSpeed into seconds
+				totalSpeed /= 60
 				
 				var individualSpeeds = float(totalSpeed / setFrames.size())
 				for frame in setFrames:
@@ -356,19 +362,22 @@ class Character: ## Classes for the stats of each Character
 				
 				var currentFrame: int = 0
 				for frameTime in setFrameTimes:
-					setFrameTimes[currentFrame] = setFrameTimes[currentFrame].to_float()
+					var totalFrameTime = setFrameTimes[currentFrame].to_float()
+					totalFrameTime /= 60 # Convert into seconds
+					setFrameTimes[currentFrame] = totalFrameTime
 					if setFrameTimes[currentFrame] <= 0:
 						print('ERROR: A frame time cannot be 0 or less!')
 						if setFrameTimes[currentFrame] == 0:
 							setFrameTimes.remove_at(currentFrame)
 							setFrameTimes.insert(currentFrame, 0.1)
-						setFrameTimes[currentFrame] = -setFrameTimes[currentFrame]
+						else:
+							setFrameTimes[currentFrame] = -setFrameTimes[currentFrame]
 					currentFrame += 1
 				
 				if setFrameTimes.size() < setFrames.size():
 					print("ERROR: FrameTimes size is less than amount of frames! Did you check your frame amount properly?")
 					while setFrameTimes.size() < setFrames.size():
-						setFrameTimes.append(0.1)
+						setFrameTimes.append(6/60.0)
 				elif setFrameTimes.size() > setFrames.size():
 					print("NOTICE: FrameTimes size is more than amount of frames.")
 					while setFrameTimes.size() > setFrames.size():
@@ -416,3 +425,28 @@ func define_character(definition: NodePath): ## Defines a character that can be 
 	if character.id != "":
 		characters.append(character)
 	
+class Board: ## Classes for each Board
+	var id: String ## The identifier of the board that is used internally.
+	var name: String ## The name of the board that shows up in-game.
+	var path: NodePath ## Where the board is stored in the game files.
+	# TODO: Have the description String be able to accept image parameters.
+	# I think RichTextLabels might have something to do with it?
+	
+	func _init(setID: String, setName: String, setPath: NodePath):
+		id = setID.to_lower()
+		name = setName
+		path = setPath
+
+func define_board(setID: String, setName: String, setPath: NodePath): ## Defines a movement ability that can be added to the game.
+	var board = Board.new(setID, setName, setPath)
+	# Only add our board if its ID isn't blank.
+	# TODO: check both the board and the Abilities for conflicting names
+	# buutt shouldn't be a problem until users can make their own boards
+	# TODO: add a new variable that reads board pictures,
+	# should work similarly to how characters do it
+	# TODO: when users can make their own boards, maybe add a 2D Board feature
+	# and add a new variable to the Board class that dictates the image used?
+	if board.id != "":
+		if board.name == "" && board.id != "N/A":
+			board.name = board.id.capitalize()
+		boards.append(board)

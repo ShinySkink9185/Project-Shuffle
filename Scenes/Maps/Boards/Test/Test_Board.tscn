@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b6smmj6q8jyjb"]
 
+[ext_resource type="PackedScene" uid="uid://bmjyixaax1gr4" path="res://Scenes/Objects/Player/player.tscn" id="1_nxit6"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_is3hn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6j25e"]
@@ -18,3 +20,5 @@ shape = SubResource("BoxShape3D_6j25e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=121517175]
 mesh = SubResource("BoxMesh_7rld2")
+
+[node name="Player" parent="." unique_id=1953867824 instance=ExtResource("1_nxit6")]

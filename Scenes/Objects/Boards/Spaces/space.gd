@@ -11,7 +11,7 @@ var playerPassed: bool = false ## Did a player just pass the space?
 var deductSpaceCount: bool = false ## If the player passed this space, does this deduct one move from their card?
 
 const ID: int = -1 ## What ID is this space?
-const AvailableIDs: Array[int] = [] ## What IDs can this space travel to?
+const ConnectedIDs: Array[int] = [] ## What IDs is this space connected to?
 
 # Constantly checks whether a player has landed or passed the space.
 func _physics_process(_delta):
