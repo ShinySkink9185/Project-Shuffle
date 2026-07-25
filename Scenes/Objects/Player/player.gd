@@ -12,7 +12,6 @@ var state: String ## What state are we in?
 func _ready():
 	refresh_animations()
 	animationPlayer.play("wait")
-	# TODO: fix Sonic's stand animation (his first is the same as one of his others, messing up timing)
 	# TODO: make animations loop once finished!
 
 func play_animation():
@@ -96,3 +95,24 @@ func refresh_animations(): ## Refreshes all animations when changing characters.
 		
 		animationIndex += 1
 	print(animationPlayer.get_animation_list())
+
+# Loop animations
+func _on_animation_player_animation_finished(anim_name):
+	var animationIndex = 0 # We need to find our index for our ID.
+	
+	var usedCharacter = Global_Statistics.characters[characterID] # Just for easier access.
+	for currentAnimation in usedCharacter.animations:
+		if currentAnimation.id == anim_name:
+			break
+		animationIndex += 1
+	
+	var loopPoint = usedCharacter.animations[animationIndex].loopPoint # What frame are we looking for?
+	var frameTimes = usedCharacter.animations[animationIndex].frameTimes # What times are these frames?
+	var startTime = 0
+	var amountToLoopPoint = 0
+	while amountToLoopPoint < loopPoint:
+		startTime += frameTimes[amountToLoopPoint]
+		amountToLoopPoint += 1
+	
+	# Finally, play our animation again!
+	animationPlayer.play_section(anim_name, startTime)
