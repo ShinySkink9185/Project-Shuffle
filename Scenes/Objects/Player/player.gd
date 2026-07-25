@@ -11,7 +11,7 @@ var state: String ## What state are we in?
 
 func _ready():
 	refresh_animations()
-	animationPlayer.play("stand")
+	animationPlayer.play("wait")
 	# TODO: fix Sonic's stand animation (his first is the same as one of his others, messing up timing)
 	# TODO: make animations loop once finished!
 
