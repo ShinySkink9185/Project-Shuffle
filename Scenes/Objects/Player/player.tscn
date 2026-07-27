@@ -8,12 +8,11 @@
 script = ExtResource("1_2bvqb")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1370545231]
+offset = Vector2(0, 32)
 texture_filter = 0
+render_priority = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D" unique_id=1980552042]
 libraries/ = SubResource("AnimationLibrary_8f63s")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1909583392]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3070219)
 
 [connection signal="animation_finished" from="Sprite3D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

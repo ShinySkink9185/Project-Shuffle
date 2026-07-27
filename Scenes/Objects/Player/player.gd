@@ -4,19 +4,16 @@ extends CharacterBody3D ## Playable characters for all intents and purposes.
 var character: String = "sonic" ## Which character are we dealing with?
 var characterID: int = 0 ## Internally, what character ID are we using?
 var playerID: int = 0 ## What player is attached to this guy?
-var state: String ## What state are we in?
+@export var mainState: String ## What state are we in?
+
+# TODO: scale pixelsize to be accurate to box constraints
 
 @onready var sprite = $Sprite3D
 @onready var animationPlayer = $Sprite3D/AnimationPlayer
 
 func _ready():
 	refresh_animations()
-	animationPlayer.play("wait")
-	# TODO: make animations loop once finished!
-
-func play_animation():
-	# TODO: play the animation if it exists; if it doesn't, fall back to the next on the list
-	pass
+	play_animation("stand")
 
 func refresh_animations(): ## Refreshes all animations when changing characters.
 	# First, we need to check if our character is valid.
@@ -95,6 +92,18 @@ func refresh_animations(): ## Refreshes all animations when changing characters.
 		
 		animationIndex += 1
 	print(animationPlayer.get_animation_list())
+
+func play_animation(animationName: String):
+	# TODO: play the animation if it exists; if it doesn't, fall back to the next on the list
+	while true: # Do this until we find an animation we can play.
+		for currentAnimationName in animationPlayer.get_animation_list(): # Loop through everything until we find a valid animation
+			if currentAnimationName == animationName:
+				animationPlayer.play(animationName)
+				return
+		# The following will only run if no animation of that type exists
+		for currentGlobalAnimation in Global_Statistics.characterAnimations:
+			if currentGlobalAnimation.id == animationName:
+				animationName = currentGlobalAnimation.fallbackID
 
 # Loop animations
 func _on_animation_player_animation_finished(anim_name):

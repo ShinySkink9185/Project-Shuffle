@@ -6,12 +6,14 @@ extends Node3D
 var active: bool = true ## Is this space currently active?
 var playerOfInterest ## The player who passed by or landed on the space.
 # TODO: maybe it would be better if the two below were signals instead
+# So, the *player* emits it to the *space*
+# use the signals guide on the Godot docs as reference
 var playerLanded: bool = false ## Did a player just land on the space?
 var playerPassed: bool = false ## Did a player just pass the space?
 var deductSpaceCount: bool = false ## If the player passed this space, does this deduct one move from their card?
 
-const ID: int = -1 ## What ID is this space?
-const ConnectedIDs: Array[int] = [] ## What IDs is this space connected to?
+@export var ID: int = -1 ## What ID is this space?
+@export var ConnectedIDs: Array[int] = [] ## What IDs is this space connected to?
 
 # Constantly checks whether a player has landed or passed the space.
 func _physics_process(_delta):
