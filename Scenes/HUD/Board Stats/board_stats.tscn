@@ -1,16 +1,65 @@
 [gd_scene format=3 uid="uid://dkdnhte8ahkie"]
 
-[node name="BoardStats" type="Control" unique_id=1760111983]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnnns"]
 
-[node name="Control" type="Control" parent="." unique_id=1583614186]
+[node name="BoardStats" type="CanvasLayer" unique_id=1795210252]
+
+[node name="Player1" type="Control" parent="." unique_id=1382495205]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=688031600]
+[node name="Icon" type="TextureRect" parent="Player1" unique_id=588159605]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_mnnns")
+
+[node name="Placement" type="TextureRect" parent="Player1" unique_id=859022718]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ring Icon" type="TextureRect" parent="Player1" unique_id=2048634024]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ring Count" type="RichTextLabel" parent="Player1" unique_id=1671195799]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Precioustone Icon" type="TextureRect" parent="Player1" unique_id=48463750]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Precioustone Count" type="RichTextLabel" parent="Player1" unique_id=1927733649]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Border" type="TextureRect" parent="Player1" unique_id=556805082]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Player2" type="Control" parent="." unique_id=1505276844]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Player3" type="Control" parent="." unique_id=1322431758]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Player4" type="Control" parent="." unique_id=694966517]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
