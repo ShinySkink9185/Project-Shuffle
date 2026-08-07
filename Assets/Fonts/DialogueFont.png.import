@@ -1,40 +1,25 @@
 [remap]
 
-importer="texture"
-type="CompressedTexture2D"
+importer="font_data_image"
+type="FontFile"
 uid="uid://bb7one1egn34s"
-path="res://.godot/imported/DialogueFont.png-e99010b5b32796b2b31c2c7b4b7fdd0f.ctex"
-metadata={
-"vram_texture": false
-}
+path="res://.godot/imported/DialogueFont.png-e99010b5b32796b2b31c2c7b4b7fdd0f.fontdata"
 
 [deps]
 
 source_file="res://Assets/Fonts/DialogueFont.png"
-dest_files=["res://.godot/imported/DialogueFont.png-e99010b5b32796b2b31c2c7b4b7fdd0f.ctex"]
+dest_files=["res://.godot/imported/DialogueFont.png-e99010b5b32796b2b31c2c7b4b7fdd0f.fontdata"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
-compress/lossy_quality=0.7
-compress/uastc_level=0
-compress/rdo_quality_loss=0.0
-compress/hdr_compression=1
-compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=false
-mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
-process/channel_remap/red=0
-process/channel_remap/green=1
-process/channel_remap/blue=2
-process/channel_remap/alpha=3
-process/fix_alpha_border=true
-process/premult_alpha=false
-process/normal_map_invert_y=false
-process/hdr_as_srgb=false
-process/hdr_clamp_exposure=false
-process/size_limit=0
-detect_3d/compress_to=1
+character_ranges=PackedStringArray("0-31", "32-32 -15", "33-33 -18", "34-34 -16", "35-38", "39-39 -20", "40-41 -15", "42-42 -12", "43-43", "44-44 -19", "45-45 -14", "46-46 -18", "47-47", "48-48 -12", "49-49 -17", "50-51 -12", "52-52 -11", "53-54 -12", "55-56 -11", "57-57 -12", "58-58 -19", "59-61", "62-62 -12", "63-63 -11", "64-64", "65-66 -11", "67-72 -12", "73-73 -20", "74-74 -13", "75-76 -12", "77-77 -10", "78-79 -12", "80-81 -11", "82-85 -12", "86-86 -11", "87-87 -10", "88-88 -11", "89-90 -12", "91-91 -17", "92-92", "93-93 -17", "94-94", "95-95 -10", "96-96", "97-97 -11", "98-98 -12", "99-99 -13", "100-101 -12", "102-102 -15", "103-103 -12", "104-104 -13", "105-105 -20", "106-106 -18", "107-107 -12", "108-108 -20", "109-109 -12", "110-110 -13", "111-113 -12", "114-114 -16", "115-115 -13", "116-116 -16", "117-117 -13", "118-118 -12", "119-119 -11", "120-120 -12", "121-121 -11", "122-122 -12", "123-127")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=1

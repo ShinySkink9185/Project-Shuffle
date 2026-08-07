@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://btkqhek7o30i1"]
+
+[ext_resource type="FontFile" uid="uid://bb7one1egn34s" path="res://Assets/Fonts/DialogueFont.png" id="1_0p5yv"]
+
+[resource]
+default_font = ExtResource("1_0p5yv")

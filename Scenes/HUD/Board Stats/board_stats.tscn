@@ -1,6 +1,28 @@
 [gd_scene format=3 uid="uid://dkdnhte8ahkie"]
 
+[ext_resource type="Texture2D" uid="uid://b57faetvo4ou2" path="res://Assets/Images/HUD/HUD.png" id="1_wg8ln"]
+
+[sub_resource type="Gradient" id="Gradient_uda33"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n35vi"]
+gradient = SubResource("Gradient_uda33")
+width = 72
+height = 20
+fill_to = Vector2(0.4, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr5bp"]
+atlas = ExtResource("1_wg8ln")
+region = Rect2(0, 384, 72, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uda33"]
+atlas = SubResource("AtlasTexture_lr5bp")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnnns"]
+atlas = ExtResource("1_wg8ln")
+region = Rect2(0, 112, 72, 72)
 
 [node name="BoardStats" type="CanvasLayer" unique_id=1795210252]
 
@@ -10,10 +32,28 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Icon" type="TextureRect" parent="Player1" unique_id=588159605]
+[node name="Border Gradient" type="TextureRect" parent="Player1" unique_id=1203041699]
+clip_children = 1
 layout_mode = 0
-offset_right = 40.0
+offset_left = 56.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 28.0
+texture = SubResource("GradientTexture2D_n35vi")
+
+[node name="Border" type="TextureRect" parent="Player1/Border Gradient" unique_id=556805082]
+texture_filter = 1
+layout_mode = 0
+offset_right = 72.0
 offset_bottom = 40.0
+texture = SubResource("AtlasTexture_uda33")
+stretch_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Player1" unique_id=588159605]
+texture_filter = 1
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
 texture = SubResource("AtlasTexture_mnnns")
 
 [node name="Placement" type="TextureRect" parent="Player1" unique_id=859022718]
@@ -41,11 +81,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Border" type="TextureRect" parent="Player1" unique_id=556805082]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Player2" type="Control" parent="." unique_id=1505276844]
 layout_mode = 3
 anchors_preset = 0
@@ -61,5 +96,7 @@ offset_bottom = 40.0
 [node name="Player4" type="Control" parent="." unique_id=694966517]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 58.0
+offset_bottom = 54.0
