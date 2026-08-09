@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dkdnhte8ahkie"]
 
+[ext_resource type="Script" uid="uid://c3xh3vxije05e" path="res://Scenes/HUD/Board Stats/board_stats.gd" id="1_av3bv"]
 [ext_resource type="Texture2D" uid="uid://b57faetvo4ou2" path="res://Assets/Images/HUD/HUD.png" id="1_wg8ln"]
+[ext_resource type="Theme" uid="uid://m14dg5vgiw1d" path="res://Assets/Themes/hud_theme.tres" id="2_uda33"]
 
 [sub_resource type="Gradient" id="Gradient_uda33"]
 interpolation_mode = 2
@@ -37,6 +39,7 @@ atlas = ExtResource("1_wg8ln")
 region = Rect2(352, 184, 32, 32)
 
 [node name="BoardStats" type="CanvasLayer" unique_id=1795210252]
+script = ExtResource("1_av3bv")
 
 [node name="Player1" type="Control" parent="." unique_id=1382495205]
 layout_mode = 3
@@ -54,7 +57,6 @@ offset_bottom = 48.0
 texture = SubResource("GradientTexture2D_n35vi")
 
 [node name="TopBorder" type="TextureRect" parent="Player1/TopBorderGradient" unique_id=556805082]
-texture_filter = 1
 layout_mode = 0
 offset_right = 72.0
 offset_bottom = 40.0
@@ -63,7 +65,6 @@ stretch_mode = 2
 
 [node name="BottomBorder" type="NinePatchRect" parent="Player1" unique_id=396735011]
 modulate = Color(1, 1, 1, 0.49803922)
-texture_filter = 1
 layout_mode = 0
 offset_left = 52.0
 offset_top = 48.0
@@ -76,7 +77,6 @@ patch_margin_right = 6
 patch_margin_bottom = 6
 
 [node name="Icon" type="TextureRect" parent="Player1" unique_id=588159605]
-texture_filter = 3
 layout_mode = 0
 offset_left = 12.0
 offset_top = 20.0
@@ -90,7 +90,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="RingIcon" type="TextureRect" parent="Player1" unique_id=2048634024]
-texture_filter = 3
 layout_mode = 0
 offset_left = 88.0
 offset_top = 70.0
@@ -99,10 +98,27 @@ offset_bottom = 86.0
 texture = SubResource("AtlasTexture_wg8ln")
 expand_mode = 1
 
+[node name="RingX" type="RichTextLabel" parent="Player1" unique_id=139397737]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 68.0
+offset_right = 146.0
+offset_bottom = 108.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("2_uda33")
+text = "*"
+
 [node name="RingCount" type="RichTextLabel" parent="Player1" unique_id=1671195799]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 120.0
+offset_top = 67.0
+offset_right = 192.0
+offset_bottom = 107.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("2_uda33")
+text = "0"
+scroll_active = false
+horizontal_alignment = 2
 
 [node name="PrecioustoneIcon" type="TextureRect" parent="Player1" unique_id=48463750]
 layout_mode = 0
@@ -113,12 +129,27 @@ offset_bottom = 66.0
 texture = SubResource("AtlasTexture_av3bv")
 expand_mode = 1
 
+[node name="PrecioustoneX" type="RichTextLabel" parent="Player1" unique_id=1608678877]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 48.0
+offset_right = 146.0
+offset_bottom = 88.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("2_uda33")
+text = "*"
+
 [node name="PrecioustoneCount" type="RichTextLabel" parent="Player1" unique_id=1927733649]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 12.0
-offset_right = 87.0
-offset_bottom = 52.0
+offset_left = 120.0
+offset_top = 48.0
+offset_right = 192.0
+offset_bottom = 88.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("2_uda33")
+text = "0"
+scroll_active = false
+horizontal_alignment = 2
 
 [node name="Player2" type="Control" parent="." unique_id=1505276844]
 layout_mode = 3
@@ -149,3 +180,6 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=928738640]
+root_node = NodePath("")

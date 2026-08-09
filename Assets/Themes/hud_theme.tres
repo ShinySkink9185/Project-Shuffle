@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://m14dg5vgiw1d"]
+
+[ext_resource type="FontFile" uid="uid://6roqhek6imrp" path="res://Assets/Fonts/HUDFont.png" id="1_3axic"]
+
+[resource]
+default_font = ExtResource("1_3axic")
+default_font_size = 40
