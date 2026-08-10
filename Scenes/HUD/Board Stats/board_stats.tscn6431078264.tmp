@@ -6,7 +6,7 @@
 
 [sub_resource type="Gradient" id="Gradient_uda33"]
 interpolation_mode = 2
-colors = PackedColorArray(0, 0, 0, 0.43529412, 1, 1, 1, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n35vi"]
 gradient = SubResource("Gradient_uda33")
@@ -177,138 +177,7 @@ load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex
 atlas = SubResource("CompressedTexture2D_88s0u")
 region = Rect2(0, 216, 96, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n35vi"]
-atlas = ExtResource("1_wg8ln")
-region = Rect2(440, 256, 72, 72)
-
-[sub_resource type="Animation" id="Animation_wc5qf"]
-resource_name = "Color Change"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TurnIndicator:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.67058825), Color(0, 1, 0, 0.67058825), Color(1, 1, 1, 0.67058825)]
-}
-
-[sub_resource type="Animation" id="Animation_av3bv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TurnIndicator:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TurnIndicator:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TurnIndicator:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_lr5bp"]
-resource_name = "Scale"
-length = 1.3333367362055928
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TurnIndicator:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
-}
-
-[sub_resource type="Animation" id="Animation_o3ya6"]
-resource_name = "Spin"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TurnIndicator:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -6.283185307179586]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wc5qf"]
-_data = {
-&"Color Change": SubResource("Animation_wc5qf"),
-&"RESET": SubResource("Animation_av3bv"),
-&"Scale": SubResource("Animation_lr5bp"),
-&"Spin": SubResource("Animation_o3ya6")
-}
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_lr5bp"]
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_av3bv"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o3ya6"]
-animation = &"Color Change"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lr5bp"]
-animation = &"Scale"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wc5qf"]
-animation = &"Spin"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_av3bv"]
-graph_offset = Vector2(-144.30586, 110.052475)
-nodes/output/position = Vector2(1120, 400)
-nodes/Scale/node = SubResource("AnimationNodeAnimation_lr5bp")
-nodes/Scale/position = Vector2(160, 144)
-nodes/Spin/node = SubResource("AnimationNodeAnimation_wc5qf")
-nodes/Spin/position = Vector2(171.88034, 338.4121)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_av3bv")
-nodes/Add2/position = Vector2(512, 240)
-nodes/Modulate/node = SubResource("AnimationNodeAnimation_o3ya6")
-nodes/Modulate/position = Vector2(528, 512)
-"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_lr5bp")
-"nodes/Add2 2/position" = Vector2(816, 320)
-node_connections = [&"output", 0, &"Add2 2", &"Add2", 0, &"Scale", &"Add2", 1, &"Spin", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Modulate"]
-
 [node name="BoardStats" type="CanvasLayer" unique_id=1795210252]
-follow_viewport_enabled = true
 script = ExtResource("1_av3bv")
 
 [node name="Player1" type="Control" parent="." unique_id=1382495205]
@@ -473,9 +342,9 @@ texture = SubResource("AtlasTexture_i01lg")
 
 [node name="Placement" type="TextureRect" parent="Player2" unique_id=1018759446]
 layout_mode = 0
-offset_left = -92.0
+offset_left = -93.0
 offset_top = 30.0
-offset_right = 6.0
+offset_right = 5.0
 offset_bottom = 62.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_yyb2d")
@@ -712,9 +581,9 @@ texture = SubResource("AtlasTexture_w4k5l")
 
 [node name="Placement" type="TextureRect" parent="Player4" unique_id=156500299]
 layout_mode = 0
-offset_left = -92.0
+offset_left = -84.0
 offset_top = -6.0
-offset_right = 4.0
+offset_right = 12.0
 offset_bottom = 26.0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_jusp6")
@@ -781,22 +650,5 @@ text = "0"
 scroll_active = false
 horizontal_alignment = 2
 
-[node name="TurnIndicator" type="TextureRect" parent="." unique_id=923547425]
-offset_left = 12.0
-offset_top = 20.0
-offset_right = 84.0
-offset_bottom = 92.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = SubResource("AtlasTexture_n35vi")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TurnIndicator" unique_id=928738640]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_wc5qf")
-autoplay = &"Scale"
-
-[node name="AnimationTree" type="AnimationTree" parent="TurnIndicator" unique_id=2018147357]
-root_node = NodePath("../..")
-tree_root = SubResource("AnimationNodeBlendTree_av3bv")
-anim_player = NodePath("../AnimationPlayer")
-parameters/Add2/add_amount = 1.0
-"parameters/Add2 2/add_amount" = 1.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=928738640]
+root_node = NodePath("")

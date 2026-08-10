@@ -19,7 +19,7 @@ func refresh_animations(): ## Refreshes all animations when changing characters.
 	# First, we need to check if our character is valid.
 	var characterFound = false
 	
-	for currentCharacter in Global_Statistics.characters:
+	for currentCharacter in GlobalStatistics.characters:
 		if currentCharacter.id == character:
 			characterFound = true
 			break
@@ -30,7 +30,7 @@ func refresh_animations(): ## Refreshes all animations when changing characters.
 		character = "sonic"
 		characterID = 0
 	
-	var usedCharacter = Global_Statistics.characters[characterID] # Just for easier access.
+	var usedCharacter = GlobalStatistics.characters[characterID] # Just for easier access.
 	
 	# Now, we need to set up our sprites.
 	var characterImage = load(usedCharacter.image)
@@ -83,7 +83,6 @@ func refresh_animations(): ## Refreshes all animations when changing characters.
 		while frameIndex <= frames.size() - 1:
 			# TODO: fix the timing of this thing!
 			animation.track_insert_key(xFrameCoord, currentFrameTime, frames[frameIndex])
-			print(currentFrameTime * 60)
 			currentFrameTime += frameTimes[frameIndex]
 			frameIndex += 1
 		
@@ -91,7 +90,6 @@ func refresh_animations(): ## Refreshes all animations when changing characters.
 		globalLibrary.add_animation(id, animation)
 		
 		animationIndex += 1
-	print(animationPlayer.get_animation_list())
 
 func play_animation(animationName: String):
 	# TODO: play the animation if it exists; if it doesn't, fall back to the next on the list
@@ -101,7 +99,7 @@ func play_animation(animationName: String):
 				animationPlayer.play(animationName)
 				return
 		# The following will only run if no animation of that type exists
-		for currentGlobalAnimation in Global_Statistics.characterAnimations:
+		for currentGlobalAnimation in GlobalStatistics.characterAnimations:
 			if currentGlobalAnimation.id == animationName:
 				animationName = currentGlobalAnimation.fallbackID
 
@@ -109,7 +107,7 @@ func play_animation(animationName: String):
 func _on_animation_player_animation_finished(anim_name):
 	var animationIndex = 0 # We need to find our index for our ID.
 	
-	var usedCharacter = Global_Statistics.characters[characterID] # Just for easier access.
+	var usedCharacter = GlobalStatistics.characters[characterID] # Just for easier access.
 	for currentAnimation in usedCharacter.animations:
 		if currentAnimation.id == anim_name:
 			break

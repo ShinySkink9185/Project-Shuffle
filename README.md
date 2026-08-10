@@ -8,6 +8,7 @@ ShinySkink9185 (made the game)
 
 ASSISTANCE:
 kleonc
+LoafStar
 
 ASSETS TAKEN FROM:
 Sonic Shuffle (Dreamcast)

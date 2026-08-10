@@ -1,5 +1,5 @@
 extends Node ## This is our storage of things that are relevant to the current game.
-class_name Game_Statistics
+# TODO: give this a class name and delete autoload, as we can have multiple stored games
 
 # Each player's info.
 # Oooo, first time I'm trying dictionaries!!
@@ -17,7 +17,7 @@ static var player_1_info = {
 }
 
 static var player_2_info = {
-	"Playing": true, 
+	"Playing": false, 
 	"Character": "sonic",
 	"Precioustones": 0,
 	"Rings": 0,
@@ -29,7 +29,7 @@ static var player_2_info = {
 }
 
 static var player_3_info = {
-	"Playing": true, 
+	"Playing": false, 
 	"Character": "sonic",
 	"Precioustones": 0,
 	"Rings": 0,
@@ -41,7 +41,7 @@ static var player_3_info = {
 }
 
 static var player_4_info = {
-	"Playing": true, 
+	"Playing": false, 
 	"Character": "sonic",
 	"Precioustones": 0,
 	"Rings": 0,
@@ -65,14 +65,19 @@ static var turn_order = [1, 2, 3, 4]
 # TODO: add a function that gets a player's placing. Calculate by Precioustones first, then by Rings.
 # TODO: add a similar function only for the end of the game, counting Emblems instead of Precioustones.
 
-func _process(delta):
+func _process(_delta):
 	# TODO: this doesn't have to run every frame; only when it needs to
 	# (say, when the ring/preciousstone count is updated)
-	determine_placements()
+	# determine_placements()
+	pass
 
 func _ready(): # NOTICE: Debug, remove later
 	determine_placements()
-	print("Placements in player order: "[player_1_info["Placement"] + ", "])
+	print("Placements in player order:")
+	print(player_1_info["Placement"])
+	print(player_2_info["Placement"])
+	print(player_3_info["Placement"])
+	print(player_4_info["Placement"])
 	
 func determine_placements():
 	# TODO: determine placements.
@@ -80,9 +85,9 @@ func determine_placements():
 	# If two or more have the same amount of Precioustones, check Rings.
 	# If they also have the same Ring amount, both have the same placement.
 	# The next placement down is always 1 lower; it never skips placements.
-	var current_place = 1
-	var players_can_be_grabbed = [true, true, true, true]
-	while players_can_be_grabbed != [false, false, false, false]:
+	var current_placement = 1
+	var players_open = [true, true, true, true]
+	while players_open != [false, false, false, false]:
 		# Iterate through all players that can be grabbed for Precioustones
 		var max_precioustones = {
 			"Count": 0, # what's the current record precioustones?
@@ -91,11 +96,12 @@ func determine_placements():
 		
 		var player_precioustone_index = 0
 		for player_info in players_info:
-			if player_info["Precioustones"] > max_precioustones["Count"]:
-				max_precioustones["Count"] = player_info["Precioustones"]
-				max_precioustones["Held By"] = [false, false, false, false]
-			if player_info["Precioustones"] >= max_precioustones["Count"]:
-				max_precioustones["Held By"][player_precioustone_index] = true
+			if players_open[player_precioustone_index] == true:
+				if player_info["Precioustones"] > max_precioustones["Count"]:
+					max_precioustones["Count"] = player_info["Precioustones"]
+					max_precioustones["Held By"] = [false, false, false, false]
+				if player_info["Precioustones"] >= max_precioustones["Count"]:
+					max_precioustones["Held By"][player_precioustone_index] = true
 			player_precioustone_index += 1
 		
 		# Check if two or more players have the same Precioustone count
@@ -109,9 +115,29 @@ func determine_placements():
 			
 			var player_ring_index = 0
 			for player_info in players_info:
-				if player_info["Precioustones"] > max_precioustones["Count"]:
-					max_precioustones["Count"] = player_info["Precioustones"]
-					max_precioustones["Held By"] = [false, false, false, false]
-				if player_info["Precioustones"] >= max_precioustones["Count"]:
-					max_precioustones["Held By"][player_precioustone_index] = true
-				player_precioustone_index += 1
+				if max_precioustones["Held By"][player_ring_index] == true:
+					if player_info["Rings"] > max_rings["Count"]:
+						max_rings["Count"] = player_info["Rings"]
+						max_rings["Held By"] = [false, false, false, false]
+					if player_info["Rings"] >= max_rings["Count"]:
+						max_rings["Held By"][player_ring_index] = true
+				player_ring_index += 1
+			
+			# Give our placement to the player(s) with the most Rings
+			var player_placement_index = 0
+			for player in max_rings["Held By"]:
+				if player == true:
+					players_info[player_placement_index]["Placement"] = current_placement
+					players_open[player_placement_index] = false
+				player_placement_index += 1
+		
+		else:
+			# Give our placement to the player with the most Precioustones
+			var player_placement_index = 0
+			for player in max_precioustones["Held By"]:
+				if player == true:
+					players_info[player_placement_index]["Placement"] = current_placement
+					players_open[player_placement_index] = false
+				player_placement_index += 1
+		
+		current_placement += 1

@@ -1,5 +1,4 @@
 extends Node ## This is our storage of things that are relevant across the entire program.
-class_name Global_Statistics
 
 static var movementAbilities = [] ## Our total movement abilities that exist in-game.
 static var attackAbilities = [] ## Our total attack abilities that exist in-game.
