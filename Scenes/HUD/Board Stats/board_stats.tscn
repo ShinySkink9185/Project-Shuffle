@@ -293,7 +293,6 @@ animation = &"Scale"
 animation = &"Spin"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_av3bv"]
-graph_offset = Vector2(-144.30586, 110.052475)
 nodes/output/position = Vector2(1120, 400)
 nodes/Scale/node = SubResource("AnimationNodeAnimation_lr5bp")
 nodes/Scale/position = Vector2(160, 144)

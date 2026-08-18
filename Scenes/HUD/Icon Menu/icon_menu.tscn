@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cfa7im00hqdd3"]
+
+[ext_resource type="Script" uid="uid://duwgg8qrngwiw" path="res://Scenes/HUD/Icon Menu/icon_menu.gd" id="1_m1yjc"]
+[ext_resource type="Texture2D" uid="uid://b57faetvo4ou2" path="res://Assets/Images/HUD/HUD.png" id="2_hkxdf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcv8q"]
+atlas = ExtResource("2_hkxdf")
+region = Rect2(0, 464, 176, 48)
+
+[sub_resource type="Animation" id="Animation_m1yjc"]
+resource_name = "Appear"
+length = 0.1000033385489136
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000334),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 48), Vector2(176, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, -24), Vector2(-88, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_hkxdf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-88, -24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hkxdf"]
+_data = {
+&"Appear": SubResource("Animation_m1yjc"),
+&"RESET": SubResource("Animation_hkxdf")
+}
+
+[node name="Icon Menu" type="Control" unique_id=1868615392]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_m1yjc")
+
+[node name="Overlay" type="TextureRect" parent="." unique_id=712467404]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -24.0
+offset_right = 88.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_kcv8q")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=986596392]
+libraries/ = SubResource("AnimationLibrary_hkxdf")
+autoplay = &"Appear"

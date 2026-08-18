@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-@onready var animation = $AnimationPlayer
-
 # Dictionaries won't work here, as if you did:
 # "Icon": $Player1/Icon.texture,
 # then changing it would change the dictionary's definition, NOT the node property.
@@ -42,6 +40,8 @@ extends CanvasLayer
 
 @onready var players = [player_1, player_2, player_3, player_4]
 
+@onready var turn_indicator = $TurnIndicator
+
 # TODO: fill out info according to game statistics
 # work on Placement and Icon
 # TODO: maybe this doesn't have to run every frame? Only when it's appropriate
@@ -64,14 +64,17 @@ func update_hud():
 		# Image stuff
 		player[3].texture.region.position.x = 96 * (GameStatistics.players_info[player_index]["Placement"] - 1)
 		
-		# Fade stuff
+		# Fade stuff and Turn Indicator stuff
+		# The Turn Indicator should only hover over one player at a time to signify their turn...
+		# hopefully my assumption's correct LOL
 		if GameStatistics.players_info[player_index]["Playing"] == true:
 			player[0].modulate = Color(1.0, 1.0, 1.0)
 			player[4].modulate = Color(1.0, 1.0, 1.0)
 			player[5].modulate = Color(1.0, 1.0, 1.0, 0.5)
+			turn_indicator.global_position = player[0].global_position
 		else:
 			player[0].modulate = Color(1.0/3, 1.0/3, 1.0/3)
 			player[4].modulate = Color(1.0/2, 1.0/2, 1.0/2)
 			player[5].modulate = Color(1.0/3, 1.0/3, 1.0/3, 0.5)
-			
+		
 		turn_index += 1
