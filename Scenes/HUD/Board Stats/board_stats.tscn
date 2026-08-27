@@ -307,7 +307,6 @@ nodes/Modulate/position = Vector2(528, 512)
 node_connections = [&"output", 0, &"Add2 2", &"Add2", 0, &"Scale", &"Add2", 1, &"Spin", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Modulate"]
 
 [node name="BoardStats" type="CanvasLayer" unique_id=1795210252]
-follow_viewport_enabled = true
 script = ExtResource("1_av3bv")
 
 [node name="Player1" type="Control" parent="." unique_id=1382495205]
