@@ -50,9 +50,6 @@ func _ready():
 	update_hud()
 
 func update_hud():
-	# TODO: figure out why this isn't changing the text
-	# My guess is it skips over the node and changes the dictionary value itself,
-	# seeing as using $Player1/RingCount.text by itself does indeed work
 	var turn_index = 0
 	for player in players:
 		var player_index = GameStatistics.turn_order[turn_index] - 1 # The HUD goes in turn order, not player order.
