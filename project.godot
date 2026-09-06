@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 GlobalStatistics="*uid://ctuxdv7q6nkcc"
 GameStatistics="*uid://dujqa41bxe572"
-ControlHandler="*uid://c0jb3p4o4o38s"
 
 [display]
 

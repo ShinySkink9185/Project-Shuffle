@@ -1,12 +1,13 @@
 class_name ShuffleControlHandler
 extends Node
 
-# TODO: write a variable that indicates what player controller has control
-# as well as a function similar to Input.is_button_pressed(), e.t.c.
-# that automatically shortens to just that player's input
-var player_controlling = 0
+var player_controlling = 1
 
-func _ready():
-	pass
+func is_action_pressed(action: StringName, exact_match: bool = false):
+	return Input.is_action_pressed(action + "_" + str(player_controlling), exact_match)
 
-func _is
+func is_action_just_pressed(action: StringName, exact_match: bool = false):
+	return Input.is_action_just_pressed(action + "_" + str(player_controlling), exact_match)
+
+func is_action_just_released(action: StringName, exact_match: bool = false):
+	return Input.is_action_just_released(action + "_" + str(player_controlling), exact_match)
