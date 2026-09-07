@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6smmj6q8jyjb"]
 
 [ext_resource type="PackedScene" uid="uid://bmjyixaax1gr4" path="res://Scenes/Objects/Player/player.tscn" id="1_nxit6"]
-[ext_resource type="PackedScene" uid="uid://dyinuk0v40ou7" path="res://Scenes/Objects/Boards/Spaces/space.tscn" id="2_7rld2"]
+[ext_resource type="PackedScene" uid="uid://dyinuk0v40ou7" path="res://Scenes/Objects/Boards/Spaces/Space.tscn" id="2_7rld2"]
 [ext_resource type="PackedScene" uid="uid://cykbv6m4ljk5r" path="res://Scenes/Objects/Boards/Spaces/Plus Ring/plus_ring_space.tscn" id="3_vv8sd"]
 [ext_resource type="PackedScene" uid="uid://n6347qn0hpni" path="res://Scenes/Objects/Boards/Spaces/Minus Ring/minus_ring_space.tscn" id="4_mnsb5"]
 [ext_resource type="PackedScene" uid="uid://dkdnhte8ahkie" path="res://Scenes/HUD/Board Stats/board_stats.tscn" id="5_8rvv4"]

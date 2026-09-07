@@ -8,8 +8,10 @@ enum IconMenuTypes {BOARD = 3, SETTINGS = 4, BATTLE = 2}
 
 var menu_ready = false # Is the menu ready to display options and handle input?
 var option_selected = 0 # What option have we selected in this menu?
-var player_selecting = 0 # Which player is choosing in the menu?
+var player_selecting = 1 # Which player controller is choosing in the menu?
 var can_back_out = false # Can you back out of this menu?
+
+var control_handler = ShuffleControlHandler.new()
 
 # Animations
 @onready var animation_global = $AnimationGlobal
@@ -36,6 +38,9 @@ func _ready():
 			can_back_out = true
 		IconMenuTypes.BATTLE:
 			animation_icons.play("Battle")
+		
+	# Set what controller our Control Handler will read.
+	control_handler.player_controlling = player_selecting
 
 func _process(delta: float) -> void:
 	# Handle input
@@ -46,11 +51,11 @@ func _process(delta: float) -> void:
 	# TODO: sound feedback
 	# TODO: confirm
 	if menu_ready == true:
-		if Input.is_action_just_pressed("move_left"):
+		if control_handler.is_action_just_pressed("move_left"):
 			option_selected -= 1
 			if option_selected < 0:
 				option_selected = type - 1
-		if Input.is_action_just_pressed("move_right"):
+		if control_handler.is_action_just_pressed("move_right"):
 			option_selected += 1
 			if option_selected >= type:
 				option_selected = 0
@@ -64,11 +69,11 @@ func _process(delta: float) -> void:
 			icon.modulate = Color(40.0/256, 40.0/256, 40.0/256)
 		icon_selected += 1
 	
-	if Input.is_action_just_pressed("enter"):
+	if control_handler.is_action_just_pressed("enter"):
 		choice_picked()
 	
 	# If the menu can be backed out of.
-	if Input.is_action_just_pressed("cancel") and type == IconMenuTypes.SETTINGS:
+	if control_handler.is_action_just_pressed("cancel") and type == IconMenuTypes.SETTINGS:
 		var board_icon_menu = load("res://Scenes/HUD/Icon Menu/icon_menu.tscn")
 		var board_icon_menu_instance = board_icon_menu.instantiate()
 		board_icon_menu_instance.type = IconMenuTypes.BOARD
