@@ -67,7 +67,7 @@ static var turn_order = [1, 2, 3, 4]
 # add it to the array as a dictionary, with a "Name" and the "Duration".
 # Make sure the duration counts down whenever you need it to.
 
-# TODO: add a function that gets a player's placing. Calculate by Precioustones first, then by Rings.
+# TODO (done!): add a function that gets a player's placing. Calculate by Precioustones first, then by Rings.
 # TODO: add a similar function only for the end of the game, counting Emblems instead of Precioustones.
 
 func _process(_delta):
