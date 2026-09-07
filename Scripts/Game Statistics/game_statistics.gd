@@ -7,6 +7,7 @@ extends Node ## This is our storage of things that are relevant to the current g
 static var player_1_info = {
 	"Playing": true, 
 	"Character": "sonic",
+	"Cards": [],
 	"Precioustones": 0,
 	"Rings": 0,
 	"Duels": 0,
@@ -19,6 +20,7 @@ static var player_1_info = {
 static var player_2_info = {
 	"Playing": false, 
 	"Character": "sonic",
+	"Cards": [],
 	"Precioustones": 0,
 	"Rings": 0,
 	"Duels": 0,
@@ -31,6 +33,7 @@ static var player_2_info = {
 static var player_3_info = {
 	"Playing": false, 
 	"Character": "sonic",
+	"Cards": [],
 	"Precioustones": 0,
 	"Rings": 0,
 	"Duels": 0,
@@ -43,6 +46,7 @@ static var player_3_info = {
 static var player_4_info = {
 	"Playing": false, 
 	"Character": "sonic",
+	"Cards": [],
 	"Precioustones": 0,
 	"Rings": 0,
 	"Duels": 0,
@@ -55,6 +59,7 @@ static var player_4_info = {
 static var players_info = [player_1_info, player_2_info, player_3_info, player_4_info]
 
 static var forcejewels_left = 7
+static var card_bank = [null]
 static var current_turn = 1
 static var turn_order = [1, 2, 3, 4]
 

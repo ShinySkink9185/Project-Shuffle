@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dchv6gxrtp7og"]
+
+[ext_resource type="Script" uid="uid://u2v6nv5r8ycn" path="res://Scenes/HUD/Card Menu/card_menu.gd" id="1_g6w60"]
+
+[node name="CardMenu" type="CanvasLayer" unique_id=2076686519]
+script = ExtResource("1_g6w60")
