@@ -150,6 +150,9 @@ class Character: ## Classes for the stats of each Character
 	var boxWidth: int
 	var boxHeight: int
 	
+	# Color stuff
+	var color: Color
+	
 	# Animation stuff.
 	var spriteList: String
 	var animations: Array
@@ -267,6 +270,13 @@ class Character: ## Classes for the stats of each Character
 			boxHeight = 64
 		else:
 			boxHeight = find_argument(definitionText, "\nboxHeight=").to_int()
+		
+		# Get our character's color.
+		if definitionText.findn("\ncolor=") == -1:
+			print("ERROR: No color has been given for this character! Defaulting to ffffff.")
+			color = Color("ffffff")
+		else:
+			color = Color(find_argument(definitionText, "\ncolor="))
 		
 		# TODO: Animation data
 		# Get our character's animation data. This'll be pretty complex...!

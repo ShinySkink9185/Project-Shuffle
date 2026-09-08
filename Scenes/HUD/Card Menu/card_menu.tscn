@@ -3,13 +3,25 @@
 [ext_resource type="Script" uid="uid://u2v6nv5r8ycn" path="res://Scenes/HUD/Card Menu/card_menu.gd" id="1_g6w60"]
 [ext_resource type="Texture2D" uid="uid://b57faetvo4ou2" path="res://Assets/Images/HUD/HUD.png" id="2_yl6k8"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnnns"]
+atlas = ExtResource("2_yl6k8")
+region = Rect2(0, 112, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl6k8"]
+atlas = ExtResource("2_yl6k8")
+region = Rect2(448, 328, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n35vi"]
 atlas = ExtResource("2_yl6k8")
 region = Rect2(448, 328, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mnnns"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2augd"]
 atlas = ExtResource("2_yl6k8")
-region = Rect2(0, 112, 72, 72)
+region = Rect2(448, 328, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l46p0"]
+atlas = ExtResource("2_yl6k8")
+region = Rect2(448, 328, 64, 64)
 
 [node name="CardMenu" type="CanvasLayer" unique_id=2076686519]
 script = ExtResource("1_g6w60")
@@ -22,15 +34,93 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1268214125]
+[node name="Player1" type="Control" parent="." unique_id=1025391459]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -40.0
+offset_top = -20.0
 offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Player1" unique_id=640262659]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_mnnns")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Player1" unique_id=57355632]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -136.0
+offset_right = 136.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_yl6k8")
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+
+[node name="Player2" type="Control" parent="." unique_id=1932472409]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Player2" unique_id=1781227476]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Player2" unique_id=1268214125]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -64.0
+offset_right = 136.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_n35vi")
@@ -39,33 +129,96 @@ patch_margin_top = 11
 patch_margin_right = 11
 patch_margin_bottom = 11
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=640262659]
-offset_left = 112.0
-offset_top = 46.0
-offset_right = 184.0
-offset_bottom = 118.0
-texture = SubResource("AtlasTexture_mnnns")
-
-[node name="Player1" type="Control" parent="." unique_id=1025391459]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Player2" type="Control" parent="." unique_id=1932472409]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Player3" type="Control" parent="." unique_id=1635589229]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Player3" unique_id=1022118852]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Player3" unique_id=1247993061]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_2augd")
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
 
 [node name="Player4" type="Control" parent="." unique_id=512764173]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Player4" unique_id=669289156]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Player4" unique_id=1147562913]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = 80.0
+offset_right = 136.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_l46p0")
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
