@@ -3,25 +3,248 @@
 [ext_resource type="Script" uid="uid://u2v6nv5r8ycn" path="res://Scenes/HUD/Card Menu/card_menu.gd" id="1_g6w60"]
 [ext_resource type="Texture2D" uid="uid://b57faetvo4ou2" path="res://Assets/Images/HUD/HUD.png" id="2_yl6k8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mnnns"]
-atlas = ExtResource("2_yl6k8")
-region = Rect2(0, 112, 72, 72)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_yl6k8"]
 atlas = ExtResource("2_yl6k8")
 region = Rect2(448, 328, 64, 64)
+
+[sub_resource type="Gradient" id="Gradient_yl6k8"]
+interpolation_mode = 2
+colors = PackedColorArray(0.49803922, 0.49803922, 0.49803922, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n35vi"]
+gradient = SubResource("Gradient_yl6k8")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnnns"]
+atlas = ExtResource("2_yl6k8")
+region = Rect2(0, 112, 72, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n35vi"]
 atlas = ExtResource("2_yl6k8")
 region = Rect2(448, 328, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_80iwk"]
+atlas = ExtResource("2_yl6k8")
+region = Rect2(0, 112, 72, 72)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2augd"]
 atlas = ExtResource("2_yl6k8")
 region = Rect2(448, 328, 64, 64)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yl6k8"]
+load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f5s2"]
+atlas = SubResource("CompressedTexture2D_yl6k8")
+region = Rect2(0, 112, 72, 72)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_l46p0"]
 atlas = ExtResource("2_yl6k8")
 region = Rect2(448, 328, 64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jdv1g"]
+load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0s8x"]
+atlas = SubResource("CompressedTexture2D_jdv1g")
+region = Rect2(0, 112, 72, 72)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2augd"]
+load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdv1g"]
+atlas = SubResource("CompressedTexture2D_2augd")
+region = Rect2(448, 328, 64, 64)
+
+[sub_resource type="Gradient" id="Gradient_2augd"]
+interpolation_mode = 2
+colors = PackedColorArray(0.49803922, 0.49803922, 0.49803922, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l46p0"]
+gradient = SubResource("Gradient_2augd")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y40g5"]
+atlas = ExtResource("2_yl6k8")
+region = Rect2(384, 216, 48, 48)
+
+[sub_resource type="Animation" id="Animation_yl6k8"]
+resource_name = "Enter"
+length = 0.33333668405152855
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_2augd"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Trash:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fade:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.49803922)]
+}
+
+[sub_resource type="Animation" id="Animation_l46p0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trash:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Player1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 304)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80iwk"]
+_data = {
+&"Enter": SubResource("Animation_yl6k8"),
+&"Idle": SubResource("Animation_2augd"),
+&"RESET": SubResource("Animation_l46p0")
+}
 
 [node name="CardMenu" type="CanvasLayer" unique_id=2076686519]
 script = ExtResource("1_g6w60")
@@ -32,7 +255,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 
 [node name="Player1" type="Control" parent="." unique_id=1025391459]
 layout_mode = 3
@@ -48,23 +271,8 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Player1" unique_id=640262659]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 36.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_mnnns")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Player1" unique_id=57355632]
+[node name="Border" type="NinePatchRect" parent="Player1" unique_id=57355632]
+clip_children = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -83,6 +291,28 @@ patch_margin_top = 11
 patch_margin_right = 11
 patch_margin_bottom = 11
 
+[node name="BorderGradient" type="TextureRect" parent="Player1/Border" unique_id=195755897]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 64.0
+texture = SubResource("GradientTexture2D_n35vi")
+
+[node name="Icon" type="TextureRect" parent="Player1" unique_id=640262659]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -132.0
+offset_right = -172.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_mnnns")
+expand_mode = 1
+
 [node name="Player2" type="Control" parent="." unique_id=1932472409]
 layout_mode = 3
 anchors_preset = 8
@@ -97,21 +327,8 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Player2" unique_id=1781227476]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Player2" unique_id=1268214125]
+[node name="Border" type="NinePatchRect" parent="Player2" unique_id=1268214125]
+clip_children = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -129,6 +346,28 @@ patch_margin_top = 11
 patch_margin_right = 11
 patch_margin_bottom = 11
 
+[node name="BorderGradient" type="TextureRect" parent="Player2/Border" unique_id=220173150]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 64.0
+texture = SubResource("GradientTexture2D_n35vi")
+
+[node name="Icon" type="TextureRect" parent="Player2" unique_id=1781227476]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -60.0
+offset_right = -172.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_80iwk")
+expand_mode = 1
+
 [node name="Player3" type="Control" parent="." unique_id=1635589229]
 layout_mode = 3
 anchors_preset = 8
@@ -143,21 +382,8 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Player3" unique_id=1022118852]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Player3" unique_id=1247993061]
+[node name="Border" type="NinePatchRect" parent="Player3" unique_id=1247993061]
+clip_children = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -176,6 +402,28 @@ patch_margin_top = 11
 patch_margin_right = 11
 patch_margin_bottom = 11
 
+[node name="BorderGradient" type="TextureRect" parent="Player3/Border" unique_id=1392438798]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 64.0
+texture = SubResource("GradientTexture2D_n35vi")
+
+[node name="Icon" type="TextureRect" parent="Player3" unique_id=886219665]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = 12.0
+offset_right = -172.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_0f5s2")
+expand_mode = 1
+
 [node name="Player4" type="Control" parent="." unique_id=512764173]
 layout_mode = 3
 anchors_preset = 8
@@ -190,21 +438,8 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Player4" unique_id=669289156]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Player4" unique_id=1147562913]
+[node name="Border" type="NinePatchRect" parent="Player4" unique_id=1147562913]
+clip_children = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -222,3 +457,78 @@ patch_margin_left = 11
 patch_margin_top = 11
 patch_margin_right = 11
 patch_margin_bottom = 11
+
+[node name="BorderGradient" type="TextureRect" parent="Player4/Border" unique_id=1628427492]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 64.0
+texture = SubResource("GradientTexture2D_n35vi")
+
+[node name="Icon" type="TextureRect" parent="Player4" unique_id=88509471]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = 84.0
+offset_right = -172.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_i0s8x")
+expand_mode = 1
+
+[node name="Trash" type="Control" parent="." unique_id=1732917677]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border" type="NinePatchRect" parent="Trash" unique_id=348544087]
+modulate = Color(0.12941177, 0.53333336, 0.7058824, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 156.0
+offset_top = -128.0
+offset_right = 244.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_jdv1g")
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+
+[node name="BorderGradient" type="TextureRect" parent="Trash/Border" unique_id=1810047963]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 264.0
+texture = SubResource("GradientTexture2D_l46p0")
+
+[node name="Icon" type="TextureRect" parent="Trash" unique_id=1616841430]
+layout_mode = 0
+offset_left = 196.0
+offset_top = -128.0
+offset_right = 244.0
+offset_bottom = -80.0
+texture = SubResource("AtlasTexture_y40g5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1578377907]
+libraries/ = SubResource("AnimationLibrary_80iwk")
+autoplay = &"Enter"

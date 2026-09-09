@@ -59,6 +59,7 @@ func update_hud():
 		player[2].text = str(GameStatistics.players_info[player_index]["Rings"])
 		
 		# Image stuff
+		# TODO: Player icons
 		player[3].texture.region.position.x = 96 * (GameStatistics.players_info[player_index]["Placement"] - 1)
 		
 		# Fade stuff and Turn Indicator stuff
