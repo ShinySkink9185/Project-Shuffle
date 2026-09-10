@@ -78,78 +78,62 @@ length = 0.33333668405152855
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player1:position")
+tracks/0/path = NodePath("Player1/Border:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": []
-}
-
-[sub_resource type="Animation" id="Animation_2augd"]
-resource_name = "Idle"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(-1021, -116), Vector2(-221, -116)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player2:position")
+tracks/1/path = NodePath("Player2/Border:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(-1021, -44), Vector2(-220, -44)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player3:position")
+tracks/2/path = NodePath("Player3/Border:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(-1021, 28), Vector2(-220, 28)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Player4:position")
+tracks/3/path = NodePath("Player4/Border:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(-1021, 100), Vector2(-220, 100)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Trash:position")
+tracks/4/path = NodePath("Trash/Border:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(976, -108), Vector2(176, -108)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -158,10 +142,86 @@ tracks/5/path = NodePath("Fade:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.49803922)]
+}
+
+[sub_resource type="Animation" id="Animation_2augd"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 0.49803922)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player1/Border:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-221, -116)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player2/Border:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-220, -44)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player3/Border:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-220, 28)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player4/Border:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-220, 100)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Trash/Border:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, -108)]
 }
 
 [sub_resource type="Animation" id="Animation_l46p0"]
@@ -176,67 +236,67 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0, 0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Trash:position")
+tracks/1/path = NodePath("Player1/Border:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(-221, -116)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player4:position")
+tracks/2/path = NodePath("Player2/Border:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(-220, -44)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Player3:position")
+tracks/3/path = NodePath("Player3/Border:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(-220, 28)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Player2:position")
+tracks/4/path = NodePath("Player4/Border:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(-220, 100)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Player1:position")
+tracks/5/path = NodePath("Trash/Border:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(176, -108)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_80iwk"]
@@ -250,6 +310,7 @@ _data = {
 script = ExtResource("1_g6w60")
 
 [node name="Fade" type="ColorRect" parent="." unique_id=271067170]
+modulate = Color(0, 0, 0, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -279,9 +340,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -240.0
+offset_left = -241.0
 offset_top = -136.0
-offset_right = 136.0
+offset_right = 135.0
 offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -297,17 +358,17 @@ offset_right = 376.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_n35vi")
 
-[node name="Icon" type="TextureRect" parent="Player1" unique_id=640262659]
+[node name="Icon" type="TextureRect" parent="Player1/Border" unique_id=640262659]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -228.0
-offset_top = -132.0
-offset_right = -172.0
-offset_bottom = -76.0
+offset_left = -175.0
+offset_top = -28.0
+offset_right = -119.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_mnnns")
@@ -337,7 +398,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -240.0
 offset_top = -64.0
-offset_right = 136.0
+offset_right = 136.00006
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_n35vi")
@@ -352,17 +413,17 @@ offset_right = 376.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_n35vi")
 
-[node name="Icon" type="TextureRect" parent="Player2" unique_id=1781227476]
+[node name="Icon" type="TextureRect" parent="Player2/Border" unique_id=1781227476]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -228.0
-offset_top = -60.0
-offset_right = -172.0
-offset_bottom = -4.0
+offset_left = -176.0
+offset_top = -28.0
+offset_right = -120.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_80iwk")
@@ -392,7 +453,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -240.0
 offset_top = 8.0
-offset_right = 136.0
+offset_right = 136.00006
 offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -408,17 +469,17 @@ offset_right = 376.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_n35vi")
 
-[node name="Icon" type="TextureRect" parent="Player3" unique_id=886219665]
+[node name="Icon" type="TextureRect" parent="Player3/Border" unique_id=886219665]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -228.0
-offset_top = 12.0
-offset_right = -172.0
-offset_bottom = 68.0
+offset_left = -176.0
+offset_top = -28.0
+offset_right = -120.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_0f5s2")
@@ -448,7 +509,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -240.0
 offset_top = 80.0
-offset_right = 136.0
+offset_right = 136.00006
 offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -464,17 +525,17 @@ offset_right = 376.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_n35vi")
 
-[node name="Icon" type="TextureRect" parent="Player4" unique_id=88509471]
+[node name="Icon" type="TextureRect" parent="Player4/Border" unique_id=88509471]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -228.0
-offset_top = 84.0
-offset_right = -172.0
-offset_bottom = 140.0
+offset_left = -176.0
+offset_top = -28.0
+offset_right = -120.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_i0s8x")
@@ -521,14 +582,15 @@ offset_right = 88.0
 offset_bottom = 264.0
 texture = SubResource("GradientTexture2D_l46p0")
 
-[node name="Icon" type="TextureRect" parent="Trash" unique_id=1616841430]
+[node name="Icon" type="TextureRect" parent="Trash/Border" unique_id=1616841430]
 layout_mode = 0
-offset_left = 196.0
-offset_top = -128.0
-offset_right = 244.0
-offset_bottom = -80.0
+offset_left = 20.0
+offset_top = -20.0
+offset_right = 68.0
+offset_bottom = 28.0
 texture = SubResource("AtlasTexture_y40g5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1578377907]
 libraries/ = SubResource("AnimationLibrary_80iwk")
 autoplay = &"Enter"
+next/Enter = &"Idle"
