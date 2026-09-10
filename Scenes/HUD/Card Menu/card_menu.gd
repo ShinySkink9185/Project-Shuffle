@@ -1,18 +1,18 @@
 extends CanvasLayer
 
-# We put the icons inside the border because animations weren't cooperating with
-# changing the position of the stored "Player" nodes, but did cooperate with the
-# border for some reason
-@onready var player_1_icon = $Player1/Border/Icon
-@onready var player_1_border = $Player1/Border
+# We put everything inside a Visuals control tab because of problems with
+# moving everything individually. In hindsight, maybe it would've been better
+# if this entire node was a Control... I think we'll be fine as-is, though.
+@onready var player_1_icon = $Visuals/Player1/Icon
+@onready var player_1_border = $Visuals/Player1/Border
 
-@onready var player_2_icon = $Player2/Border/Icon
-@onready var player_2_border = $Player2/Border
+@onready var player_2_icon = $Visuals/Player2/Icon
+@onready var player_2_border = $Visuals/Player2/Border
 
-@onready var player_3_icon = $Player3/Border/Icon
+@onready var player_3_icon = $Visuals/Player3/Icon
 @onready var player_3_border = $Player3/Border
 
-@onready var player_4_icon = $Player4/Border/Icon
+@onready var player_4_icon = $Visuals/Player4/Icon
 @onready var player_4_border = $Player4/Border
 
 # Called when the node enters the scene tree for the first time.
