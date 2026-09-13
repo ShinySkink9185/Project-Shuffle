@@ -1,12 +1,12 @@
-id = Tails
-name = Tails
-movementAbility = PROPELLER_FLIGHT
-attackAbility = RAPID_SPIN_ATTACK
-image = Tails.png
-iconImage = TailsIcons.png
+id = Amy
+name = Amy
+movementAbility = HAMMER_JUMP
+attackAbility = REVOLVING_HAMMER_ATTACK
+image = Amy.png
+iconImage = AmyIcons.png
 boxWidth = 64
 boxHeight = 64
-color = ffcd00
+color = ff6666
 spriteList = stand, wait
 
 standFrames = 0-8, 1-5, 9-10, 8, 1-8, 11-12, 12-13, 12-13, 12, 12, 11

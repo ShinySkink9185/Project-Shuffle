@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwuywglp2lgmc"
-path="res://.godot/imported/Tails.png-ed8dc5ef9f9d81127fb7535bbac1e72e.ctex"
+uid="uid://ciyuysoced5ri"
+path="res://.godot/imported/Amy.png-f7a3952579050f153de7cf9cab9b3ecb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character Definitions/Amy/Tails.png"
-dest_files=["res://.godot/imported/Tails.png-ed8dc5ef9f9d81127fb7535bbac1e72e.ctex"]
+source_file="res://Assets/Character Definitions/Amy/Amy.png"
+dest_files=["res://.godot/imported/Amy.png-f7a3952579050f153de7cf9cab9b3ecb.ctex"]
 
 [params]
 

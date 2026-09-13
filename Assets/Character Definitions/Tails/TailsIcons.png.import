@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bndi1wvgb02ov"
-path="res://.godot/imported/TailsIcons.png-3875a978b1db1750c1e2cad9e2c4efdb.ctex"
+uid="uid://cm2n1dtmn13v8"
+path="res://.godot/imported/TailsIcons.png-2f3acae1d8e162696f0bfc7b05ad1141.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character Definitions/Amy/TailsIcons.png"
-dest_files=["res://.godot/imported/TailsIcons.png-3875a978b1db1750c1e2cad9e2c4efdb.ctex"]
+source_file="res://Assets/Character Definitions/Tails/TailsIcons.png"
+dest_files=["res://.godot/imported/TailsIcons.png-2f3acae1d8e162696f0bfc7b05ad1141.ctex"]
 
 [params]
 
