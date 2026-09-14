@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bndi1wvgb02ov"
-path="res://.godot/imported/TailsIcons.png-9434bdd6dc35bb85f32eea77f1d0815e.ctex"
+uid="uid://iwuhh0cmmb5c"
+path="res://.godot/imported/SuperSonicIcons.png-dae086846382a0337e289043632bf296.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character Definitions/Super Sonic/TailsIcons.png"
-dest_files=["res://.godot/imported/TailsIcons.png-9434bdd6dc35bb85f32eea77f1d0815e.ctex"]
+source_file="res://Assets/Character Definitions/Super Sonic/SuperSonicIcons.png"
+dest_files=["res://.godot/imported/SuperSonicIcons.png-dae086846382a0337e289043632bf296.ctex"]
 
 [params]
 

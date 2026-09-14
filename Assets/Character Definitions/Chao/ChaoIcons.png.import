@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg8ufgg0sgv14"
-path="res://.godot/imported/Tails.png-683e1f65ff0bc0946f23764f2bffa2ad.ctex"
+uid="uid://dyy527qmbyws4"
+path="res://.godot/imported/ChaoIcons.png-4282dca13eea1becf908f11a8b087855.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character Definitions/Gamma/Tails.png"
-dest_files=["res://.godot/imported/Tails.png-683e1f65ff0bc0946f23764f2bffa2ad.ctex"]
+source_file="res://Assets/Character Definitions/Chao/ChaoIcons.png"
+dest_files=["res://.godot/imported/ChaoIcons.png-4282dca13eea1becf908f11a8b087855.ctex"]
 
 [params]
 

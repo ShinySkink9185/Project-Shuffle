@@ -1,12 +1,12 @@
-id = Tails
-name = Tails
-movementAbility = PROPELLER_FLIGHT
-attackAbility = RAPID_SPIN_ATTACK
-image = Tails.png
-iconImage = TailsIcons.png
+id = SuperSonic
+name = Super Sonic
+movementAbility = LIGHT_SPEED_SPIN_DASH
+attackAbility = SONIC_RUMBLE
+image = SuperSonic.png
+iconImage = SuperSonicIcons.png
 boxWidth = 64
 boxHeight = 64
-color = ffcd00
+color = efef00
 spriteList = stand, wait
 
 standFrames = 0-8, 1-5, 9-10, 8, 1-8, 11-12, 12-13, 12-13, 12, 12, 11

@@ -1,12 +1,12 @@
-id = Tails
-name = Tails
-movementAbility = PROPELLER_FLIGHT
-attackAbility = RAPID_SPIN_ATTACK
-image = Tails.png
-iconImage = TailsIcons.png
+id = Big
+name = Big
+movementAbility = FROGGY
+attackAbility = POWER_THROW
+image = Big.png
+iconImage = BigIcons.png
 boxWidth = 64
 boxHeight = 64
-color = ffcd00
+color = 7862f1
 spriteList = stand, wait
 
 standFrames = 0-8, 1-5, 9-10, 8, 1-8, 11-12, 12-13, 12-13, 12, 12, 11
