@@ -5,6 +5,14 @@ static var attackAbilities = [] ## Our total attack abilities that exist in-game
 static var characterAnimations = [] ## Our valid character animation names that exist in-game.
 static var characters = [] ## Our total characters that exist in-game.
 static var boards = [] ## Our total boards that exist in-game.
+static var settings = { ## Our settings for the game.
+	"Sound": 0, # 0 is Stereo, 1 is Monaural
+	"Card Display": 0, # 0 is displayed from the top, 1 is displayed in fixed position.
+	"Computer Speed": 0, # 0 is normal, 1 is high-speed
+	"Board Spaces": 0, # 0 is normal, 1 is Chinese Characters
+	"Card System": 0 # 0 is normal, 1 is hidden
+} 
+# TODO: Unlockables & save data in general
 
 func _ready():
 	# Movement Ability definitions
@@ -50,6 +58,13 @@ func _ready():
 	
 	# Character definitions
 	define_character("res://Assets/Character Definitions/Sonic/sonicDefinition.txt")
+	define_character("res://Assets/Character Definitions/Tails/tailsDefinition.txt")
+	define_character("res://Assets/Character Definitions/Knuckles/knucklesDefinition.txt")
+	define_character("res://Assets/Character Definitions/Amy/amyDefinition.txt")
+	define_character("res://Assets/Character Definitions/Big/bigDefinition.txt")
+	define_character("res://Assets/Character Definitions/Gamma/gammaDefinition.txt")
+	define_character("res://Assets/Character Definitions/Chao/chaoDefinition.txt")
+	define_character("res://Assets/Character Definitions/Super Sonic/supersonicDefinition.txt")
 	
 	# Board definitions
 	# TODO: maybe these can be defined through text files as well once people can

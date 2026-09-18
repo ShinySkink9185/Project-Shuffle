@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://etlwcjg1ccul"]
+
+[ext_resource type="Script" uid="uid://b3de18q0jxck1" path="res://Scenes/HUD/Player Icon/player_icon.gd" id="1_37eul"]
+[ext_resource type="Texture2D" uid="uid://crn6sq5ol1sfc" path="res://Assets/Character Definitions/Sonic/SonicIcons.png" id="1_o0qxq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ix0v"]
+atlas = ExtResource("1_o0qxq")
+region = Rect2(4, 4, 72, 72)
+
+[node name="PlayerIcon" type="TextureRect" unique_id=676491259]
+offset_right = 72.0
+offset_bottom = 72.0
+texture = SubResource("AtlasTexture_2ix0v")
+expand_mode = 1
+script = ExtResource("1_37eul")

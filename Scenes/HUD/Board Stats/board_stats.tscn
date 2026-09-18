@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c3xh3vxije05e" path="res://Scenes/HUD/Board Stats/board_stats.gd" id="1_av3bv"]
 [ext_resource type="Texture2D" uid="uid://b57faetvo4ou2" path="res://Assets/Images/HUD/HUD.png" id="1_wg8ln"]
+[ext_resource type="PackedScene" uid="uid://etlwcjg1ccul" path="res://Scenes/HUD/Player Icon/player_icon.tscn" id="2_lr5bp"]
 [ext_resource type="Theme" uid="uid://m14dg5vgiw1d" path="res://Assets/Themes/hud_theme.tres" id="2_uda33"]
+[ext_resource type="Texture2D" uid="uid://crn6sq5ol1sfc" path="res://Assets/Character Definitions/Sonic/SonicIcons.png" id="3_wc5qf"]
 
 [sub_resource type="Gradient" id="Gradient_uda33"]
 interpolation_mode = 2
@@ -32,12 +34,9 @@ load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex
 atlas = SubResource("CompressedTexture2D_av3bv")
 region = Rect2(416, 72, 52, 40)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3fahq"]
-load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mnnns"]
-atlas = SubResource("CompressedTexture2D_3fahq")
-region = Rect2(0, 112, 72, 72)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuagy"]
+atlas = ExtResource("3_wc5qf")
+region = Rect2(4, 4, 72, 72)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i01lg"]
 load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
@@ -82,12 +81,9 @@ load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex
 atlas = SubResource("CompressedTexture2D_yuagy")
 region = Rect2(416, 72, 52, 40)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yohfb"]
-load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i01lg"]
-atlas = SubResource("CompressedTexture2D_yohfb")
-region = Rect2(0, 112, 72, 72)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yohfb"]
+atlas = ExtResource("3_wc5qf")
+region = Rect2(4, 4, 72, 72)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h868q"]
 load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
@@ -124,12 +120,9 @@ load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex
 atlas = SubResource("CompressedTexture2D_uara2")
 region = Rect2(416, 72, 52, 40)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wa2re"]
-load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wvlk6"]
-atlas = SubResource("CompressedTexture2D_wa2re")
-region = Rect2(0, 112, 72, 72)
+[sub_resource type="AtlasTexture" id="AtlasTexture_i01lg"]
+atlas = ExtResource("3_wc5qf")
+region = Rect2(4, 4, 72, 72)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1mhm4"]
 load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
@@ -163,12 +156,9 @@ atlas = SubResource("AtlasTexture_lr5bp")
 atlas = ExtResource("1_wg8ln")
 region = Rect2(416, 72, 52, 40)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ay6ea"]
-load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4k5l"]
-atlas = SubResource("CompressedTexture2D_ay6ea")
-region = Rect2(0, 112, 72, 72)
+[sub_resource type="AtlasTexture" id="AtlasTexture_h868q"]
+atlas = ExtResource("3_wc5qf")
+region = Rect2(4, 4, 72, 72)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_88s0u"]
 load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
@@ -344,13 +334,13 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Icon" type="TextureRect" parent="Player1" unique_id=588159605]
+[node name="PlayerIcon" parent="Player1" unique_id=676491259 instance=ExtResource("2_lr5bp")]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 20.0
 offset_right = 84.0
 offset_bottom = 92.0
-texture = SubResource("AtlasTexture_mnnns")
+texture = SubResource("AtlasTexture_yuagy")
 
 [node name="Placement" type="TextureRect" parent="Player1" unique_id=859022718]
 layout_mode = 0
@@ -461,13 +451,17 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Icon" type="TextureRect" parent="Player2" unique_id=2053127125]
-layout_mode = 0
-offset_left = -44.0
+[node name="PlayerIcon" parent="Player2" unique_id=1990656504 instance=ExtResource("2_lr5bp")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -84.0
 offset_top = 20.0
-offset_right = 28.0
+offset_right = -12.0
 offset_bottom = 92.0
-texture = SubResource("AtlasTexture_i01lg")
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_yohfb")
 
 [node name="Placement" type="TextureRect" parent="Player2" unique_id=1018759446]
 layout_mode = 0
@@ -580,13 +574,17 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Icon" type="TextureRect" parent="Player3" unique_id=2047189273]
-layout_mode = 0
+[node name="PlayerIcon" parent="Player3" unique_id=1043404886 instance=ExtResource("2_lr5bp")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 12.0
-offset_top = -52.0
+offset_top = -92.0
 offset_right = 84.0
-offset_bottom = 20.0
-texture = SubResource("AtlasTexture_wvlk6")
+offset_bottom = -20.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_i01lg")
 
 [node name="Placement" type="TextureRect" parent="Player3" unique_id=987546732]
 layout_mode = 0
@@ -700,13 +698,20 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Icon" type="TextureRect" parent="Player4" unique_id=1824845965]
-layout_mode = 0
-offset_left = -44.0
-offset_top = -52.0
-offset_right = 28.0
-offset_bottom = 20.0
-texture = SubResource("AtlasTexture_w4k5l")
+[node name="PlayerIcon" parent="Player4" unique_id=1520519020 instance=ExtResource("2_lr5bp")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -92.0
+offset_right = -12.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_h868q")
 
 [node name="Placement" type="TextureRect" parent="Player4" unique_id=156500299]
 layout_mode = 0

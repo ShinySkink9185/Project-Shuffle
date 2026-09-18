@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://u2v6nv5r8ycn" path="res://Scenes/HUD/Card Menu/card_menu.gd" id="1_g6w60"]
 [ext_resource type="Texture2D" uid="uid://b57faetvo4ou2" path="res://Assets/Images/HUD/HUD.png" id="2_yl6k8"]
+[ext_resource type="PackedScene" uid="uid://etlwcjg1ccul" path="res://Scenes/HUD/Player Icon/player_icon.tscn" id="3_l46p0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yl6k8"]
 atlas = ExtResource("2_yl6k8")
@@ -17,39 +18,45 @@ fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mnnns"]
-atlas = ExtResource("2_yl6k8")
-region = Rect2(0, 112, 72, 72)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l46p0"]
+load_path = "res://.godot/imported/SonicIcons.png-53619696e0d341b8d9a039accfb643fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80iwk"]
+atlas = SubResource("CompressedTexture2D_l46p0")
+region = Rect2(4, 4, 72, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n35vi"]
 atlas = ExtResource("2_yl6k8")
 region = Rect2(448, 328, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_80iwk"]
-atlas = ExtResource("2_yl6k8")
-region = Rect2(0, 112, 72, 72)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0f5s2"]
+load_path = "res://.godot/imported/SonicIcons.png-53619696e0d341b8d9a039accfb643fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0s8x"]
+atlas = SubResource("CompressedTexture2D_0f5s2")
+region = Rect2(4, 4, 72, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2augd"]
 atlas = ExtResource("2_yl6k8")
 region = Rect2(448, 328, 64, 64)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yl6k8"]
-load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_adygv"]
+load_path = "res://.godot/imported/SonicIcons.png-53619696e0d341b8d9a039accfb643fb.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0f5s2"]
-atlas = SubResource("CompressedTexture2D_yl6k8")
-region = Rect2(0, 112, 72, 72)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o3ex"]
+atlas = SubResource("CompressedTexture2D_adygv")
+region = Rect2(4, 4, 72, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l46p0"]
 atlas = ExtResource("2_yl6k8")
 region = Rect2(448, 328, 64, 64)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jdv1g"]
-load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sqwsj"]
+load_path = "res://.godot/imported/SonicIcons.png-53619696e0d341b8d9a039accfb643fb.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0s8x"]
-atlas = SubResource("CompressedTexture2D_jdv1g")
-region = Rect2(0, 112, 72, 72)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtksd"]
+atlas = SubResource("CompressedTexture2D_sqwsj")
+region = Rect2(4, 4, 72, 72)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2augd"]
 load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
@@ -326,9 +333,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -20.0
+offset_top = -19.0
 offset_right = 20.0
-offset_bottom = 20.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -372,7 +379,7 @@ offset_right = 376.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_n35vi")
 
-[node name="Icon" type="TextureRect" parent="Visuals/Player1" unique_id=640262659]
+[node name="PlayerIcon" parent="Visuals/Player1" unique_id=676491259 instance=ExtResource("3_l46p0")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -385,8 +392,7 @@ offset_right = -173.0
 offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_mnnns")
-expand_mode = 1
+texture = SubResource("AtlasTexture_80iwk")
 
 [node name="Player2" type="Control" parent="Visuals" unique_id=1932472409]
 layout_mode = 1
@@ -427,21 +433,20 @@ offset_right = 376.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_n35vi")
 
-[node name="Icon" type="TextureRect" parent="Visuals/Player2" unique_id=1781227476]
+[node name="PlayerIcon" parent="Visuals/Player2" unique_id=1243153649 instance=ExtResource("3_l46p0")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -228.99997
+offset_left = -228.99998
 offset_top = -60.0
-offset_right = -172.99997
+offset_right = -172.99998
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_80iwk")
-expand_mode = 1
+texture = SubResource("AtlasTexture_i0s8x")
 
 [node name="Player3" type="Control" parent="Visuals" unique_id=1635589229]
 layout_mode = 1
@@ -483,21 +488,20 @@ offset_right = 376.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_n35vi")
 
-[node name="Icon" type="TextureRect" parent="Visuals/Player3" unique_id=886219665]
+[node name="PlayerIcon" parent="Visuals/Player3" unique_id=1820154123 instance=ExtResource("3_l46p0")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -227.99997
+offset_left = -228.0
 offset_top = 12.0
-offset_right = -171.99997
+offset_right = -172.0
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_0f5s2")
-expand_mode = 1
+texture = SubResource("AtlasTexture_1o3ex")
 
 [node name="Player4" type="Control" parent="Visuals" unique_id=512764173]
 layout_mode = 1
@@ -539,21 +543,20 @@ offset_right = 376.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_n35vi")
 
-[node name="Icon" type="TextureRect" parent="Visuals/Player4" unique_id=88509471]
+[node name="PlayerIcon" parent="Visuals/Player4" unique_id=2055242154 instance=ExtResource("3_l46p0")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -227.99997
+offset_left = -228.0
 offset_top = 84.0
-offset_right = -171.99997
+offset_right = -172.0
 offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_i0s8x")
-expand_mode = 1
+texture = SubResource("AtlasTexture_dtksd")
 
 [node name="Trash" type="Control" parent="Visuals" unique_id=1732917677]
 layout_mode = 1

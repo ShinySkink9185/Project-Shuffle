@@ -3,7 +3,7 @@ extends CharacterBody3D ## Playable characters for all intents and purposes.
 # TODO: when the character is switched or when the player is initialized, reload all of our animations
 var character: String = "sonic" ## Which character are we dealing with?
 var characterID: int = 0 ## Internally, what character ID are we using?
-var playerID: int = 0 ## What player is attached to this guy?
+var playerID: int = 1  ## What player is attached to this guy?
 @export var mainState: String ## What state are we in?
 
 # TODO: scale pixelsize to be accurate to box constraints

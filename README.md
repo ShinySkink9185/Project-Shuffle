@@ -6,6 +6,9 @@ PROJECT CREDITS:
 
 ShinySkink9185 (made the game)
 
+SHUFFLE'S GREATEST WARRIOR:
+GHNeko
+
 ASSISTANCE:
 kleonc
 LoafStar

@@ -6,7 +6,7 @@ extends CanvasLayer
 # So, we're gonna have to go back to using the old variables method...
 # ...maybe there's another way to optimize this?
 
-@onready var player_1_icon = $Player1/Icon
+@onready var player_1_icon = $Player1/PlayerIcon
 @onready var player_1_precioustones = $Player1/PrecioustoneCount
 @onready var player_1_rings = $Player1/RingCount
 @onready var player_1_placement = $Player1/Placement
@@ -14,7 +14,7 @@ extends CanvasLayer
 @onready var player_1_bottom_border = $Player1/BottomBorder
 @onready var player_1 = [player_1_icon, player_1_precioustones, player_1_rings, player_1_placement, player_1_top_border_gradient, player_1_bottom_border]
 
-@onready var player_2_icon = $Player2/Icon
+@onready var player_2_icon = $Player2/PlayerIcon
 @onready var player_2_precioustones = $Player2/PrecioustoneCount
 @onready var player_2_rings = $Player2/RingCount
 @onready var player_2_placement = $Player2/Placement
@@ -22,7 +22,7 @@ extends CanvasLayer
 @onready var player_2_bottom_border = $Player2/BottomBorder
 @onready var player_2 = [player_2_icon, player_2_precioustones, player_2_rings, player_2_placement, player_2_top_border_gradient, player_2_bottom_border]
 
-@onready var player_3_icon = $Player3/Icon
+@onready var player_3_icon = $Player3/PlayerIcon
 @onready var player_3_precioustones = $Player3/PrecioustoneCount
 @onready var player_3_rings = $Player3/RingCount
 @onready var player_3_placement = $Player3/Placement
@@ -30,7 +30,7 @@ extends CanvasLayer
 @onready var player_3_bottom_border = $Player3/BottomBorder
 @onready var player_3 = [player_3_icon, player_3_precioustones, player_3_rings, player_3_placement, player_3_top_border_gradient, player_3_bottom_border]
 
-@onready var player_4_icon = $Player4/Icon
+@onready var player_4_icon = $Player4/PlayerIcon
 @onready var player_4_precioustones = $Player4/PrecioustoneCount
 @onready var player_4_rings = $Player4/RingCount
 @onready var player_4_placement = $Player4/Placement
@@ -59,7 +59,7 @@ func update_hud():
 		player[2].text = str(GameStatistics.players_info[player_index]["Rings"])
 		
 		# Image stuff
-		# TODO: Player icons
+		player[0].playerID = player_index + 1
 		player[3].texture.region.position.x = 96 * (GameStatistics.players_info[player_index]["Placement"] - 1)
 		
 		# Fade stuff and Turn Indicator stuff

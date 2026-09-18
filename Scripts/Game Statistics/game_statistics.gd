@@ -14,12 +14,13 @@ static var player_1_info = {
 	"Forcejewels": [null, null, null, null, null],
 	"Space": 0,
 	"Effects": [],
-	"Placement": 1
+	"Placement": 1,
+	"Difficulty": 0 # 0 is Human, 1 is Easy, 2 is Normal, 3 is Hard, 4 is Very Hard (last one may be unused?)
 }
 
 static var player_2_info = {
 	"Playing": false, 
-	"Character": "sonic",
+	"Character": "tails",
 	"Cards": [],
 	"Precioustones": 0,
 	"Rings": 0,
@@ -27,12 +28,13 @@ static var player_2_info = {
 	"Forcejewels": [null, null, null, null, null],
 	"Space": 0,
 	"Effects": [],
-	"Placement": 1
+	"Placement": 1,
+	"Difficulty": 0
 }
 
 static var player_3_info = {
 	"Playing": false, 
-	"Character": "sonic",
+	"Character": "knuckles",
 	"Cards": [],
 	"Precioustones": 0,
 	"Rings": 0,
@@ -40,12 +42,13 @@ static var player_3_info = {
 	"Forcejewels": [null, null, null, null, null],
 	"Space": 0,
 	"Effects": [],
-	"Placement": 1
+	"Placement": 1,
+	"Difficulty": 0
 }
 
 static var player_4_info = {
 	"Playing": false, 
-	"Character": "sonic",
+	"Character": "amy",
 	"Cards": [],
 	"Precioustones": 0,
 	"Rings": 0,
@@ -53,7 +56,8 @@ static var player_4_info = {
 	"Forcejewels": [null, null, null, null, null],
 	"Space": 0,
 	"Effects": [],
-	"Placement": 1
+	"Placement": 1,
+	"Difficulty": 0
 }
 
 static var players_info = [player_1_info, player_2_info, player_3_info, player_4_info]
