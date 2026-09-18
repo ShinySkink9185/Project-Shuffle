@@ -82,5 +82,9 @@ func _ready() -> void:
 		order_index += 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# TODO: Navigation through the menu.
+# TODO: Support input for map viewing
+# TODO: Shuffling cards. The player choosing from the menu cannot shuffle;
+# all other players can. There is no special animation for it.
 func _process(delta: float) -> void:
 	pass
