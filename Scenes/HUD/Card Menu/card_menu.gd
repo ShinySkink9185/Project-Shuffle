@@ -13,11 +13,11 @@ extends CanvasLayer
 @onready var player_2 = [player_2_icon, player_2_border]
 
 @onready var player_3_icon = $Visuals/Player3/PlayerIcon
-@onready var player_3_border = $Player3/Border
+@onready var player_3_border = $Visuals/Player3/Border
 @onready var player_3 = [player_3_icon, player_3_border]
 
 @onready var player_4_icon = $Visuals/Player4/PlayerIcon
-@onready var player_4_border = $Player4/Border
+@onready var player_4_border = $Visuals/Player4/Border
 @onready var player_4 = [player_4_icon, player_4_border]
 
 @onready var players = [player_1, player_2, player_3, player_4]
@@ -60,7 +60,7 @@ func _ready() -> void:
 		var characterID = 0
 		
 		# Change our character ID string over here.
-		var character = GameStatistics.players_info[player_index]["Character"]
+		var character = GameStatistics.players_info[player_index - 1]["Character"]
 		
 		# First, we need to check if our character is valid.
 		var characterFound = false
@@ -77,7 +77,7 @@ func _ready() -> void:
 			characterID = 0
 		
 		# Now, load our color border
-		player[1].modulate = Color(GlobalStatistics.characters[characterID].color)
+		player[1].modulate = GlobalStatistics.characters[characterID].color
 		
 		order_index += 1
 
