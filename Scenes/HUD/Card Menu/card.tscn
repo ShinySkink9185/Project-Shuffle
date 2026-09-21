@@ -132,3 +132,5 @@ texture = SubResource("AtlasTexture_mnnns")
 root_node = NodePath("../TextureRect")
 libraries/ = SubResource("AnimationLibrary_hr4is")
 autoplay = &"Idle"
+"next/Enter Hover" = &"Hover"
+"next/Exit Hover" = &"Idle"

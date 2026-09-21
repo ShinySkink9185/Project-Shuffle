@@ -14,6 +14,8 @@ static var settings = { ## Our settings for the game.
 } 
 # TODO: Unlockables & save data in general
 
+enum CardTypes {ONE = 1, TWO, THREE, FOUR, FIVE, SIX, SPECIAL, EGGMAN, EGGMAN_FOUR} ## The types of cards we have.
+
 func _ready():
 	# Movement Ability definitions
 	# (How they play in-game is defined by the player node; this just recognizes their existence, mostly.)

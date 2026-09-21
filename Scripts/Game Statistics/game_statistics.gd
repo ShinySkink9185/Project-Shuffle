@@ -87,6 +87,8 @@ func _ready(): # NOTICE: Debug, remove later
 	print(player_2_info["Placement"])
 	print(player_3_info["Placement"])
 	print(player_4_info["Placement"])
+	# debug
+	reshuffle_cards()
 	
 func determine_placements():
 	# TODO: determine placements.
@@ -150,3 +152,34 @@ func determine_placements():
 				player_placement_index += 1
 		
 		current_placement += 1
+
+func reshuffle_cards(): ## Reshuffles the cards of everyone once no cards are left.
+	var refreshed_card_bank = [ # The cards that will be distributed.
+		GlobalStatistics.CardTypes.ONE, GlobalStatistics.CardTypes.ONE, GlobalStatistics.CardTypes.ONE, GlobalStatistics.CardTypes.ONE, 
+		GlobalStatistics.CardTypes.TWO, GlobalStatistics.CardTypes.TWO, GlobalStatistics.CardTypes.TWO, GlobalStatistics.CardTypes.TWO,
+		GlobalStatistics.CardTypes.THREE, GlobalStatistics.CardTypes.THREE, GlobalStatistics.CardTypes.THREE, GlobalStatistics.CardTypes.THREE,
+		GlobalStatistics.CardTypes.FOUR, GlobalStatistics.CardTypes.FOUR, GlobalStatistics.CardTypes.FOUR, GlobalStatistics.CardTypes.FOUR,
+		GlobalStatistics.CardTypes.FIVE, GlobalStatistics.CardTypes.FIVE, GlobalStatistics.CardTypes.FIVE, GlobalStatistics.CardTypes.FIVE,
+		GlobalStatistics.CardTypes.SIX, GlobalStatistics.CardTypes.SIX, GlobalStatistics.CardTypes.SIX, GlobalStatistics.CardTypes.SIX,
+		GlobalStatistics.CardTypes.SPECIAL, GlobalStatistics.CardTypes.SPECIAL, GlobalStatistics.CardTypes.SPECIAL, 
+		GlobalStatistics.CardTypes.EGGMAN]
+	# TODO: figure out how to make everything shuffle the same for all players in online.
+	# Maybe only shuffle the cards on the host, and then return that shuffle to everyone else?
+	# Or give everyone the same seed somehow...
+	refreshed_card_bank.shuffle()
+	for player in players_info:
+		# Distribute the cards for all players.
+		var times = 7
+		while times > 0:
+			var card_stored = refreshed_card_bank.pop_back()
+			# TODO: If one person doesn't get a special card, the game freezes in the while loop.
+			# Make another card bank with just the Wild Cards, and give one to each person instead.
+			# Check if we have a Wild Card already
+			if (player["Cards"].has(GlobalStatistics.CardTypes.SPECIAL) or player["Cards"].has(GlobalStatistics.CardTypes.EGGMAN)) and (card_stored == GlobalStatistics.CardTypes.SPECIAL or card_stored == GlobalStatistics.CardTypes.EGGMAN):
+				refreshed_card_bank.append(card_stored)
+				refreshed_card_bank.shuffle()
+			else:
+				player["Cards"].append(card_stored)
+				times -= 1
+	
+	print(player_1_info["Cards"])

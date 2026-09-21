@@ -1,10 +1,10 @@
 extends Control
 
-enum CardTypes {ONE, TWO, THREE, FOUR, FIVE, SIX, SPECIAL, EGGMAN, EGGMAN_FOUR}
-@export var type: CardTypes
+@export var type: GlobalStatistics.CardTypes
 
 var showing = false
-var hovering = true
+var hovering = false
+var wasHovering = false
 var selected = false
 var appearing = false
 
@@ -21,14 +21,9 @@ func _ready():
 		cardImage.texture.region.position.x = 432
 
 func _process(_delta):
-	if hovering == true:
-		if animation.current_animation == "Idle" or animation.current_animation == "Exit Hover":
-			animation.play("Enter Hover")
-		else:
-			animation.play("Hover")
-	else:
-		if animation.current_animation == "Hover" or animation.current_animation == "Enter Hover":
-			animation.play("Exit Hover")
-		else:
-			animation.play("Idle")
-		
+	if hovering == true and wasHovering == false:
+		animation.play("Enter Hover")
+		wasHovering = true
+	elif hovering == false and wasHovering == true:
+		animation.play("Exit Hover")
+		wasHovering = false
