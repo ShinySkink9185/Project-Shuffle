@@ -6,7 +6,7 @@ var showing = false
 var hovering = false
 var wasHovering = false
 var selected = false
-var appearing = false
+var appearing = true
 
 @onready var animation = $AnimationPlayer
 @onready var cardImage = $TextureRect

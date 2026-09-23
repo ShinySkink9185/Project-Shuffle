@@ -10,7 +10,6 @@ region = Rect2(432, 0, 48, 72)
 [sub_resource type="Animation" id="Animation_8tnp8"]
 resource_name = "Appear"
 length = 0.13333667362071572
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -132,5 +131,6 @@ texture = SubResource("AtlasTexture_mnnns")
 root_node = NodePath("../TextureRect")
 libraries/ = SubResource("AnimationLibrary_hr4is")
 autoplay = &"Idle"
+next/Appear = &"Idle"
 "next/Enter Hover" = &"Hover"
 "next/Exit Hover" = &"Idle"

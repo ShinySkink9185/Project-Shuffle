@@ -181,4 +181,3 @@ func reshuffle_cards(): ## Reshuffles the cards of everyone once no cards are le
 		# Now, distribute the special cards.
 		player["Cards"].insert(randi_range(0, player["Cards"].size()), refreshed_special_card_bank.pop_back())
 	
-	print(player_1_info["Cards"])

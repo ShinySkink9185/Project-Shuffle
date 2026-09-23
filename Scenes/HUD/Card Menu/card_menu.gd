@@ -6,19 +6,27 @@ extends CanvasLayer
 
 @onready var player_1_icon = $Visuals/Player1/PlayerIcon
 @onready var player_1_border = $Visuals/Player1/Border
-@onready var player_1 = [player_1_icon, player_1_border]
+@onready var player_1_cards = []
+@onready var player_1_card_marker = $Visuals/Player1/Marker2D
+@onready var player_1 = [player_1_icon, player_1_border, player_1_cards, player_1_card_marker]
 
 @onready var player_2_icon = $Visuals/Player2/PlayerIcon
 @onready var player_2_border = $Visuals/Player2/Border
-@onready var player_2 = [player_2_icon, player_2_border]
+@onready var player_2_cards = []
+@onready var player_2_card_marker = $Visuals/Player2/Marker2D
+@onready var player_2 = [player_2_icon, player_2_border, player_2_cards, player_2_card_marker]
 
 @onready var player_3_icon = $Visuals/Player3/PlayerIcon
 @onready var player_3_border = $Visuals/Player3/Border
-@onready var player_3 = [player_3_icon, player_3_border]
+@onready var player_3_cards = []
+@onready var player_3_card_marker = $Visuals/Player3/Marker2D
+@onready var player_3 = [player_3_icon, player_3_border, player_3_cards, player_3_card_marker]
 
 @onready var player_4_icon = $Visuals/Player4/PlayerIcon
 @onready var player_4_border = $Visuals/Player4/Border
-@onready var player_4 = [player_4_icon, player_4_border]
+@onready var player_4_cards = []
+@onready var player_4_card_marker = $Visuals/Player4/Marker2D
+@onready var player_4 = [player_4_icon, player_4_border, player_4_cards, player_4_card_marker]
 
 @onready var players = [player_1, player_2, player_3, player_4]
 
@@ -26,28 +34,23 @@ var menu_ready = false # Is the menu ready to display options and handle input?
 var option_selected = Vector2(0, 0) # What option have we selected in this menu?
 var player_selecting = 1 # Which player controller is choosing in the menu?
 
+# TODO: We need four control handlers, one for our main and three for our players.
 var control_handler = ShuffleControlHandler.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# First, get our current turn order.
-	# TODO: formatting for all the players. Here's how it works:
-	# If the global setting for Card Display is 1,
-	# the players are shown, from top to bottom, in player (not turn) order.
-	# If it is set to 0,
-	# the player that's currently playing is moved to the top of the list,
-	# and the other players are shifted accordingly.
 	# TODO: make said option per-player, and
 	# MAKE SURE ONLINE PLAYERS HAVE THE SETTING LINKED TO THEM TOO!
 	var player_order = Array(GameStatistics.turn_order)
-	print(player_order)
 	if GlobalStatistics.settings["Card Display"] == 0:
 		# Move our player to be the first one on the list.
 		player_order.erase(player_selecting)
 		player_order.push_front(player_selecting)
 	
-	# Replace our icon.
-	# TODO: do that
+	# Get us our player controller
+	control_handler.player_controlling = player_selecting
+	
 	var order_index = 0
 	for player in players:
 		var player_index = player_order[order_index]

@@ -394,6 +394,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_80iwk")
 
+[node name="Marker2D" type="Marker2D" parent="Visuals/Player1" unique_id=1509259899]
+position = Vector2(-141, -108)
+
 [node name="Player2" type="Control" parent="Visuals" unique_id=1932472409]
 layout_mode = 1
 anchors_preset = 8
@@ -447,6 +450,9 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_i0s8x")
+
+[node name="Marker2D" type="Marker2D" parent="Visuals/Player2" unique_id=170890667]
+position = Vector2(-141, -36)
 
 [node name="Player3" type="Control" parent="Visuals" unique_id=1635589229]
 layout_mode = 1
@@ -503,6 +509,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_1o3ex")
 
+[node name="Marker2D" type="Marker2D" parent="Visuals/Player3" unique_id=1900981119]
+position = Vector2(-141, 36)
+
 [node name="Player4" type="Control" parent="Visuals" unique_id=512764173]
 layout_mode = 1
 anchors_preset = 8
@@ -557,6 +566,9 @@ offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_dtksd")
+
+[node name="Marker2D" type="Marker2D" parent="Visuals/Player4" unique_id=783666708]
+position = Vector2(-141, 108)
 
 [node name="Trash" type="Control" parent="Visuals" unique_id=1732917677]
 layout_mode = 1
