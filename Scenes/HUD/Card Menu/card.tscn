@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://dp3rgivpkjn3k"]
 
 [ext_resource type="Script" uid="uid://b6yj7esarlrr6" path="res://Scenes/HUD/Card Menu/card.gd" id="1_8tnp8"]
-[ext_resource type="Texture2D" uid="uid://b57faetvo4ou2" path="res://Assets/Images/HUD/HUD.png" id="1_e5eyc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e5eyc"]
+load_path = "res://.godot/imported/HUD.png-d13841a9823a7a3aab9b252a225d5fb1.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnnns"]
-atlas = ExtResource("1_e5eyc")
+resource_local_to_scene = true
+atlas = SubResource("CompressedTexture2D_e5eyc")
 region = Rect2(432, 0, 48, 72)
 
 [sub_resource type="Animation" id="Animation_8tnp8"]
@@ -114,18 +117,15 @@ _data = {
 
 [node name="Card" type="Control" unique_id=1801669188]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_8tnp8")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1294659945]
 layout_mode = 0
-offset_right = 48.0
-offset_bottom = 72.0
+offset_right = 32.0
+offset_bottom = 48.0
 texture = SubResource("AtlasTexture_mnnns")
+expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1386004463]
 root_node = NodePath("../TextureRect")

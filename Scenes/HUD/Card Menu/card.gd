@@ -1,12 +1,12 @@
 extends Control
 
-@export var type: GlobalStatistics.CardTypes
+@export var type: GlobalStatistics.CardTypes = GlobalStatistics.CardTypes.ONE
 
-var showing = false
+var showing = true
 var hovering = false
 var wasHovering = false
 var selected = false
-var appearing = true
+var appearing = false
 
 @onready var animation = $AnimationPlayer
 @onready var cardImage = $TextureRect
@@ -16,9 +16,11 @@ func _ready():
 		animation.play("Appear")
 	
 	if showing == true:
-		cardImage.texture.region.position.x = 48 * (type)
+		cardImage.texture.region.position.x = 48 * (type - 1)
 	else:
 		cardImage.texture.region.position.x = 432
+	
+	print(type)
 
 func _process(_delta):
 	if hovering == true and wasHovering == false:
