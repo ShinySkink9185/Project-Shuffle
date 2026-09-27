@@ -94,6 +94,10 @@ func _ready() -> void:
 			var card = card_scene.instantiate()
 			card.type = current_card
 			card.position = Vector2(player[3].position.x + (card_index * 40), player[3].position.y)
+			if GlobalStatistics.settings["Card System"] == 0 and player_index == player_selecting:
+				card.showing = true
+			else:
+				card.showing = false
 			player[2].append(card)
 			player[4].add_child(card)
 			card_index += 1

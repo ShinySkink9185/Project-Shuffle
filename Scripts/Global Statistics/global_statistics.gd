@@ -10,7 +10,7 @@ static var settings = { ## Our settings for the game.
 	"Card Display": 0, # 0 is displayed from the top, 1 is displayed in fixed position.
 	"Computer Speed": 0, # 0 is normal, 1 is high-speed
 	"Board Spaces": 0, # 0 is normal, 1 is Chinese Characters
-	"Card System": 0 # 0 is normal, 1 is hidden
+	"Card System": 0, # 0 is normal, 1 is hidden.
 } 
 # TODO: Unlockables & save data in general
 
