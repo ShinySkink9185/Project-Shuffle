@@ -82,13 +82,6 @@ func _process(_delta):
 
 func _ready(): # NOTICE: Debug, remove later
 	determine_placements()
-	print("Placements in player order:")
-	print(player_1_info["Placement"])
-	print(player_2_info["Placement"])
-	print(player_3_info["Placement"])
-	print(player_4_info["Placement"])
-	# debug
-	reshuffle_cards()
 	
 func determine_placements():
 	# TODO: determine placements.

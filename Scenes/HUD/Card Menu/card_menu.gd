@@ -41,13 +41,13 @@ var player_selecting = 1 # Which player controller is choosing in the menu?
 # TODO: We need four control handlers, one for our main and three for our players.
 var control_handler = ShuffleControlHandler.new()
 var card_scene = load("res://Scenes/HUD/Card Menu/card.tscn")
+var player_order = Array(GameStatistics.turn_order)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# First, get our current turn order.
-	# TODO: make said option per-player, and
+	# First, get our current order.
+	# TODO: make the card display option per-player, and
 	# MAKE SURE ONLINE PLAYERS HAVE THE SETTING LINKED TO THEM TOO!
-	var player_order = Array(GameStatistics.turn_order)
 	if GlobalStatistics.settings["Card Display"] == 0:
 		# Move our player to be the first one on the list.
 		player_order.erase(player_selecting)
@@ -87,8 +87,33 @@ func _ready() -> void:
 		# Now, load our color border
 		player[1].modulate = GlobalStatistics.characters[character_ID].color
 		
-		# Finally, add all of our Cards!
-		# TODO: change their "showing" variable depending on card display mode
+		order_index += 1
+	
+	# Load our cards
+	load_cards()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+# TODO: Navigation through the menu.
+# TODO: Support input for map viewing
+# TODO: Shuffling cards. The player choosing from the menu cannot shuffle;
+# all other players can. There is no special animation for it.
+func _process(delta: float) -> void:
+	pass
+
+# Reshuffle everyone's cards 
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Enter" and player_1_cards == [] and player_2_cards == [] and player_3_cards == [] and player_4_cards == []:
+		GameStatistics.reshuffle_cards()
+		load_cards(true)
+	else:
+		menu_ready = true
+		
+# Add all of our Cards!
+func load_cards(fading := false):
+	var order_index = 0
+	for player in players:
+		var player_index = player_order[order_index]
+		
 		var card_index = 0
 		for current_card in GameStatistics.players_info[player_index - 1]["Cards"]:
 			var card = card_scene.instantiate()
@@ -98,16 +123,17 @@ func _ready() -> void:
 				card.showing = true
 			else:
 				card.showing = false
+			if fading == true:
+				card.appearing = true
+			else:
+				card.appearing = false
 			player[2].append(card)
 			player[4].add_child(card)
 			card_index += 1
 		
+		if fading == true:
+			await get_tree().create_timer(1.0/30.0).timeout
+	
 		order_index += 1
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-# TODO: Navigation through the menu.
-# TODO: Support input for map viewing
-# TODO: Shuffling cards. The player choosing from the menu cannot shuffle;
-# all other players can. There is no special animation for it.
-func _process(delta: float) -> void:
-	pass
+	if fading == true:
+		menu_ready = true
