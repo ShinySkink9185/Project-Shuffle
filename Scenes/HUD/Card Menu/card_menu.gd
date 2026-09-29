@@ -98,15 +98,16 @@ func _ready() -> void:
 # TODO: Shuffling cards. The player choosing from the menu cannot shuffle;
 # all other players can. There is no special animation for it.
 func _process(delta: float) -> void:
-	pass
-
+	if menu_ready == true:
+		# Make our card hover.
+		players[option_selected.x][2][option_selected.y].hovering = true
 # Reshuffle everyone's cards 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Enter" and player_1_cards == [] and player_2_cards == [] and player_3_cards == [] and player_4_cards == []:
 		GameStatistics.reshuffle_cards()
 		load_cards(true)
-	else:
-		menu_ready = true
+	elif anim_name == "Enter":
+		_on_menu_just_ready()
 		
 # Add all of our Cards!
 func load_cards(fading := false):
@@ -136,4 +137,14 @@ func load_cards(fading := false):
 	
 		order_index += 1
 	if fading == true:
-		menu_ready = true
+		player_1_cards[0].finished_appearing.connect(_on_menu_just_ready)
+
+
+func _on_menu_just_ready():
+	print("Menu is ready!")
+	# Positioning the cursor at the start.
+	for player in players:
+		if player[2] != []:
+			break
+		option_selected.y += 1
+	menu_ready = true

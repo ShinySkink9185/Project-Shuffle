@@ -8,6 +8,8 @@ var wasHovering = false
 var selected = false
 var appearing = false
 
+signal finished_appearing
+
 @onready var animation = $AnimationPlayer
 @onready var cardImage = $TextureRect
 
@@ -19,8 +21,6 @@ func _ready():
 		cardImage.texture.region.position.x = 48 * (type - 1)
 	else:
 		cardImage.texture.region.position.x = 432
-	
-	print(type)
 
 func _process(_delta):
 	if hovering == true and wasHovering == false:
@@ -29,3 +29,10 @@ func _process(_delta):
 	elif hovering == false and wasHovering == true:
 		animation.play("Exit Hover")
 		wasHovering = false
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Appear":
+		print(anim_name)
+		# TODO: fix this...
+		print("Finished appearing!")
+		finished_appearing.emit()
