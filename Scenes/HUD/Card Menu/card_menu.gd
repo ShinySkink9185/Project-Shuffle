@@ -141,7 +141,6 @@ func load_cards(fading := false):
 
 
 func _on_menu_just_ready():
-	print("Menu is ready!")
 	# Positioning the cursor at the start.
 	for player in players:
 		if player[2] != []:

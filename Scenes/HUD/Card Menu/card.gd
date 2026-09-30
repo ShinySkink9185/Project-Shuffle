@@ -12,10 +12,13 @@ signal finished_appearing
 
 @onready var animation = $AnimationPlayer
 @onready var cardImage = $TextureRect
+@onready var cursor = $Cursor
 
 func _ready():
 	if appearing == true:
 		animation.play("Appear")
+	else:
+		animation.play("Idle")
 	
 	if showing == true:
 		cardImage.texture.region.position.x = 48 * (type - 1)
@@ -26,13 +29,12 @@ func _process(_delta):
 	if hovering == true and wasHovering == false:
 		animation.play("Enter Hover")
 		wasHovering = true
+		cursor.visible = true
 	elif hovering == false and wasHovering == true:
 		animation.play("Exit Hover")
 		wasHovering = false
+		cursor.visible = false
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Appear":
-		print(anim_name)
-		# TODO: fix this...
-		print("Finished appearing!")
 		finished_appearing.emit()
