@@ -33,15 +33,21 @@ extends CanvasLayer
 @onready var player_4 = [player_4_icon, player_4_border, player_4_cards, player_4_card_marker, player_4_node]
 
 @onready var players = [player_1, player_2, player_3, player_4]
+@onready var cards = [player_1_cards, player_2_cards, player_3_cards, player_4_cards]
 
 var menu_ready = false # Is the menu ready to display options and handle input?
 var option_selected = Vector2(0, 0) # What option have we selected in this menu?
 var player_selecting = 1 # Which player controller is choosing in the menu?
+var delay_timer = 0 # How much delay do we have?
+var direction = "" # What direction are we going in?
 
 # TODO: We need four control handlers, one for our main and three for our players.
 var control_handler = ShuffleControlHandler.new()
 var card_scene = load("res://Scenes/HUD/Card Menu/card.tscn")
 var player_order = Array(GameStatistics.turn_order)
+
+const INITIAL_DELAY = 10.0/30.0
+const HOLDING_DELAY = 7.0/30.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -98,9 +104,44 @@ func _ready() -> void:
 # TODO: Shuffling cards. The player choosing from the menu cannot shuffle;
 # all other players can. There is no special animation for it.
 func _process(delta: float) -> void:
+	# Holding takes 7 frames. Starting takes 10 frames.
+	
+	# Nullify our direction.
+	if control_handler.is_action_just_released("move_right") and direction == "right" \
+	or control_handler.is_action_just_released("move_left") and direction == "left" \
+	or control_handler.is_action_just_released("move_up") and direction == "up" \
+	or control_handler.is_action_just_released("move_down") and direction == "down":
+		direction = ""
+	
+	# Set our direction.
+	# TODO: Immediately card switch if two or more buttons are pressed at the same time
+	if control_handler.is_action_just_pressed("move_right"):
+		direction = "right"
+		delay_timer = INITIAL_DELAY
+	elif control_handler.is_action_just_pressed("move_left"):
+		direction = "left"
+		delay_timer = INITIAL_DELAY
+	elif control_handler.is_action_just_pressed("move_up"):
+		direction = "up"
+		delay_timer = INITIAL_DELAY
+	elif control_handler.is_action_just_pressed("move_down"):
+		direction = "down"
+		delay_timer = INITIAL_DELAY
+	
+	# Highlight our new card.
+	if delay_timer <= 0 or delay_timer == INITIAL_DELAY:
+		if direction == "up" or direction == "down" or direction == "left" or direction == "right":
+			card_switch(direction)
+		if delay_timer <= 0:
+			delay_timer = HOLDING_DELAY
+	
 	if menu_ready == true:
 		# Make our card hover.
-		players[option_selected.x][2][option_selected.y].hovering = true
+		cards[option_selected.x][option_selected.y].hovering = true
+	
+	# Move our clock down.
+	delay_timer -= delta
+	
 # Reshuffle everyone's cards 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Enter" and player_1_cards == [] and player_2_cards == [] and player_3_cards == [] and player_4_cards == []:
@@ -129,6 +170,9 @@ func load_cards(fading := false):
 			else:
 				card.appearing = false
 			player[2].append(card)
+			# Connect the signal before we add our child.
+			if order_index == 0 and card_index == 0 and fading == true:
+				player_1_cards[0].finished_appearing.connect(_on_menu_just_ready)
 			player[4].add_child(card)
 			card_index += 1
 		
@@ -136,14 +180,31 @@ func load_cards(fading := false):
 			await get_tree().create_timer(1.0/30.0).timeout
 	
 		order_index += 1
-	if fading == true:
-		player_1_cards[0].finished_appearing.connect(_on_menu_just_ready)
 
 
 func _on_menu_just_ready():
+	print("Menu ready!")
 	# Positioning the cursor at the start.
 	for player in players:
 		if player[2] != []:
 			break
 		option_selected.y += 1
 	menu_ready = true
+
+func card_switch(direction: String):
+	# TODO: convert direction to coord_change
+	var coord_change
+	if direction == "up":
+		coord_change = Vector2(0, -1)
+	elif direction == "down":
+		coord_change = Vector2(0, 1)
+	elif direction == "left":
+		coord_change = Vector2(-1, 0)
+	elif direction == "right":
+		coord_change = Vector2(1, 0)
+	# Switch up the coord change to prevent breaking LOL
+	coord_change = Vector2(coord_change.y, coord_change.x)
+	if option_selected.x + coord_change.x >= 0 and option_selected.x + coord_change.x <= 3 \
+	and option_selected.y + coord_change.y >= 0 and option_selected.y + coord_change.y <= cards[coord_change.x].size() - 1:
+		cards[option_selected.x][option_selected.y].hovering = false
+		option_selected = Vector2(option_selected.x + coord_change.x, option_selected.y + coord_change.y)
