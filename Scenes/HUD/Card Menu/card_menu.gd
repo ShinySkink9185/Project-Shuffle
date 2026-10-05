@@ -114,22 +114,29 @@ func _process(delta: float) -> void:
 		direction = ""
 	
 	# Set our direction.
-	# TODO: Immediately card switch if two or more buttons are pressed at the same time
+	# NOTICE: Would be helpful if your selection could keep going diagonally
 	if control_handler.is_action_just_pressed("move_right"):
 		direction = "right"
+		card_switch(direction)
 		delay_timer = INITIAL_DELAY
-	elif control_handler.is_action_just_pressed("move_left"):
+	
+	if control_handler.is_action_just_pressed("move_left"):
 		direction = "left"
+		card_switch(direction)
 		delay_timer = INITIAL_DELAY
-	elif control_handler.is_action_just_pressed("move_up"):
+	
+	if control_handler.is_action_just_pressed("move_up"):
 		direction = "up"
+		card_switch(direction)
 		delay_timer = INITIAL_DELAY
-	elif control_handler.is_action_just_pressed("move_down"):
+	
+	if control_handler.is_action_just_pressed("move_down"):
 		direction = "down"
+		card_switch(direction)
 		delay_timer = INITIAL_DELAY
 	
 	# Highlight our new card.
-	if delay_timer <= 0 or delay_timer == INITIAL_DELAY:
+	if delay_timer <= 0:
 		if direction == "up" or direction == "down" or direction == "left" or direction == "right":
 			card_switch(direction)
 		if delay_timer <= 0:
