@@ -35,15 +35,20 @@ extends CanvasLayer
 @onready var players = [player_1, player_2, player_3, player_4]
 @onready var cards = [player_1_cards, player_2_cards, player_3_cards, player_4_cards]
 
+@onready var animation = $AnimationPlayer
+
 var menu_ready = false # Is the menu ready to display options and handle input?
 var option_selected = Vector2(0, 0) # What option have we selected in this menu?
 var player_selecting = 1 # Which player controller is choosing in the menu?
 var delay_timer = 0 # How much delay do we have?
 var direction = "" # What direction are we going in?
+var exiting = false # Are we exiting the menu due to a "cancel" input?
+var type = 0 # 0 is BOARD, 1 is BATTLE
 
 # TODO: We need four control handlers, one for our main and three for our players.
 var control_handler = ShuffleControlHandler.new()
 var card_scene = load("res://Scenes/HUD/Card Menu/card.tscn")
+var icon_menu_scene = load("res://Scenes/HUD/Icon Menu/icon_menu.tscn")
 var player_order = Array(GameStatistics.turn_order)
 
 var sub_control_handler_1 = ShuffleControlHandler.new()
@@ -170,15 +175,27 @@ func _process(delta: float) -> void:
 		# TODO: do that
 		# TODO: also add ability to shuffle cards
 		if control_handler.is_action_just_pressed("cancel"):
-			pass
+			animation.play_backwards("Enter")
+			menu_ready = false
+			exiting = true
 	
 	# Move our clock down.
 	delay_timer -= delta
 	
-	
-	
-# Reshuffle everyone's cards 
+# Reshuffle everyone's cards, or add the menu
 func _on_animation_player_animation_finished(anim_name):
+	if exiting == true and anim_name == "Enter":
+		var icon_menu = icon_menu_scene.instantiate()
+		# TODO: modify the icon menu's type by determining if
+		# we're in the board or a battle
+		if type == 0:
+			icon_menu.type = icon_menu.IconMenuTypes.BOARD
+		elif type == 1:
+			icon_menu.type = icon_menu.IconMenuTypes.BATTLE
+		icon_menu.player_selecting = player_selecting
+		get_parent().add_child(icon_menu)
+		queue_free()
+	
 	if anim_name == "Enter" and player_1_cards == [] and player_2_cards == [] and player_3_cards == [] and player_4_cards == []:
 		GameStatistics.reshuffle_cards()
 		load_cards(true)
@@ -218,7 +235,6 @@ func load_cards(fading := false):
 
 
 func _on_menu_just_ready():
-	print("Menu ready!")
 	# Positioning the cursor at the start.
 	for player in players:
 		if player[2] != []:

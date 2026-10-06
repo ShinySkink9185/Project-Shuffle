@@ -96,7 +96,11 @@ func choice_picked():
 					get_parent().add_child(settings_icon_menu_instance)
 				1:
 					# TODO: This opens the Board Cards menu.
-					pass
+					var card_menu_scene = load("res://Scenes/HUD/Card Menu/card_menu.tscn")
+					var card_menu = card_menu_scene.instantiate()
+					card_menu.type = 0
+					card_menu.player_selecting = player_selecting
+					get_parent().add_child(card_menu)
 				2:
 					# TODO: This opens the Board Precioustone menu.
 					pass
@@ -118,7 +122,11 @@ func choice_picked():
 			match option_selected:
 				0:
 					# TODO: This opens the Battle Cards menu.
-					pass
+					var card_menu_scene = load("res://Scenes/HUD/Card Menu/card_menu.tscn")
+					var card_menu = card_menu_scene.instantiate()
+					card_menu.type = 1
+					card_menu.player_selecting = player_selecting
+					get_parent().add_child(card_menu)
 				1:
 					# TODO: This opens the Battle Precioustone menu.
 					pass
