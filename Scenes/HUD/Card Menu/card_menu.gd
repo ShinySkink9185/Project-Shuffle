@@ -46,6 +46,10 @@ var control_handler = ShuffleControlHandler.new()
 var card_scene = load("res://Scenes/HUD/Card Menu/card.tscn")
 var player_order = Array(GameStatistics.turn_order)
 
+var sub_control_handler_1 = ShuffleControlHandler.new()
+var sub_control_handler_2 = ShuffleControlHandler.new()
+var sub_control_handler_3 = ShuffleControlHandler.new()
+
 const INITIAL_DELAY = 10.0/30.0
 const HOLDING_DELAY = 7.0/30.0
 
@@ -61,6 +65,22 @@ func _ready() -> void:
 	
 	# Get us our player controller
 	control_handler.player_controlling = player_selecting
+	
+	# Get us our sub-controllers
+	if control_handler.player_controlling <= 1:
+		sub_control_handler_1.player_controlling = 2
+	else:
+		sub_control_handler_1.player_controlling = 1
+	
+	if control_handler.player_controlling <= 2:
+		sub_control_handler_2.player_controlling = 3
+	else:
+		sub_control_handler_2.player_controlling = 2
+	
+	if control_handler.player_controlling <= 3:
+		sub_control_handler_3.player_controlling = 4
+	else:
+		sub_control_handler_3.player_controlling = 3
 	
 	var order_index = 0
 	for player in players:
@@ -145,9 +165,17 @@ func _process(delta: float) -> void:
 	if menu_ready == true:
 		# Make our card hover.
 		cards[option_selected.x][option_selected.y].hovering = true
+		
+		# Exit out of the menu if input is pressed.
+		# TODO: do that
+		# TODO: also add ability to shuffle cards
+		if control_handler.is_action_just_pressed("cancel"):
+			pass
 	
 	# Move our clock down.
 	delay_timer -= delta
+	
+	
 	
 # Reshuffle everyone's cards 
 func _on_animation_player_animation_finished(anim_name):
@@ -199,7 +227,6 @@ func _on_menu_just_ready():
 	menu_ready = true
 
 func card_switch(direction: String):
-	# TODO: convert direction to coord_change
 	var coord_change
 	if direction == "up":
 		coord_change = Vector2(0, -1)
