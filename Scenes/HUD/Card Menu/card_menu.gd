@@ -41,7 +41,7 @@ var menu_ready = false # Is the menu ready to display options and handle input?
 var option_selected = Vector2(0, 0) # What option have we selected in this menu?
 var player_selecting = 1 # Which player controller is choosing in the menu?
 var delay_timer = 0 # How much delay do we have?
-var direction = "" # What direction are we going in?
+var direction = [] # What direction are we going in?
 var exiting = false # Are we exiting the menu due to a "cancel" input?
 var type = 0 # 0 is BOARD, 1 is BATTLE
 
@@ -132,40 +132,46 @@ func _process(delta: float) -> void:
 	# Holding takes 7 frames. Starting takes 10 frames.
 	
 	# Nullify our direction.
-	if control_handler.is_action_just_released("move_right") and direction == "right" \
-	or control_handler.is_action_just_released("move_left") and direction == "left" \
-	or control_handler.is_action_just_released("move_up") and direction == "up" \
-	or control_handler.is_action_just_released("move_down") and direction == "down":
-		direction = ""
+	if not control_handler.is_action_pressed("move_right") and direction.has("right"):
+		direction.erase("right")
+	
+	if not control_handler.is_action_pressed("move_left") and direction.has("left"):
+		direction.erase("left")
+	
+	if not control_handler.is_action_pressed("move_up") and direction.has("up"):
+		direction.erase("up")
+	
+	if not control_handler.is_action_pressed("move_down") and direction.has("down"):
+		direction.erase("down")
 	
 	# Set our direction.
 	# NOTICE: Would be helpful if your selection could keep going diagonally
-	if control_handler.is_action_just_pressed("move_right"):
-		direction = "right"
-		card_switch(direction)
+	if control_handler.is_action_pressed("move_right") and direction.find("right") == -1:
+		direction.append("right")
+		card_switch("right")
 		delay_timer = INITIAL_DELAY
 	
-	if control_handler.is_action_just_pressed("move_left"):
-		direction = "left"
-		card_switch(direction)
+	if control_handler.is_action_pressed("move_left") and direction.find("left") == -1:
+		direction.append("left")
+		card_switch("left")
 		delay_timer = INITIAL_DELAY
 	
-	if control_handler.is_action_just_pressed("move_up"):
-		direction = "up"
-		card_switch(direction)
+	if control_handler.is_action_pressed("move_up") and direction.find("up") == -1:
+		direction.append("up")
+		card_switch("up")
 		delay_timer = INITIAL_DELAY
 	
-	if control_handler.is_action_just_pressed("move_down"):
-		direction = "down"
-		card_switch(direction)
+	if control_handler.is_action_pressed("move_down") and direction.find("down") == -1:
+		direction.append("down")
+		card_switch("down")
 		delay_timer = INITIAL_DELAY
 	
 	# Highlight our new card.
 	if delay_timer <= 0:
-		if direction == "up" or direction == "down" or direction == "left" or direction == "right":
-			card_switch(direction)
-		if delay_timer <= 0:
-			delay_timer = HOLDING_DELAY
+		if direction != []:
+			for current_direction in direction:
+				card_switch(current_direction)
+		delay_timer = HOLDING_DELAY
 	
 	if menu_ready == true:
 		# Make our card hover.

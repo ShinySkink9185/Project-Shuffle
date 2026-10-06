@@ -108,5 +108,5 @@ color = Color(0, 0, 0, 0)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=711913919]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_yjp0m")
-"next/Fade Out" = &"Off"
 "next/Fade In" = &"On"
+"next/Fade Out" = &"Off"
